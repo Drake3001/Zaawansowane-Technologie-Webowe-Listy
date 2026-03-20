@@ -1,225 +1,73 @@
 // ==========================================================================
 // SEKCJE STRONY (Sections)
-// Zasady, notacja, CTA
+// Bazowa klasa sekcji + sekcja zasad gry
 // ==========================================================================
 
 // ---- Sekcja bazowa -----
 .section {
-  @include section-base;
+  @include section-base;             // MIXIN: padding responsywny
   position: relative;
 
   &__container {
-    @extend %container;
+    @extend %container;              // DZIEDZICZENIE: max-width + centrowanie
   }
 
   &__header {
-    @extend %section-header;
+    @extend %section-header;         // DZIEDZICZENIE: wyśrodkowany nagłówek
   }
 
   &__divider {
-    @extend %divider;
+    @extend %divider;                // DZIEDZICZENIE: linia z gradientem
   }
 }
 
 // --- Sekcja: Zasady gry -----------------------------------------------------
 .rules {
-  background: $bg-secondary;
-  @include checkerboard-bg(rgba(255,255,255,0.015), transparent, 40px);
+  background: $bg-secondary;        // ZMIENNA: kolor tła
+  @include checkerboard-bg(rgba(255,255,255,0.015), transparent, 40px); // MIXIN + OPERATOR w środku
 
   &__grid {
-    @include card-grid(280px);
+    @include card-grid(280px);       // MIXIN: responsywna siatka kart
   }
 
   &__card {
-    @extend %glass-card;
-    padding: $spacing-xl;
-    @include flex-center(column);
+    @extend %glass-card;             // DZIEDZICZENIE: efekt szkła
+    padding: $spacing-xl;            // ZMIENNA: odstęp
+    @include flex-center(column);    // MIXIN: flex kolumna
     align-items: flex-start;
-    gap: $spacing-md;
-    @include gold-hover-glow;
+    gap: $spacing-md;                // ZMIENNA: odstęp
+    @include gold-hover-glow;        // MIXIN: efekt hover ze złotą poświatą
 
     &-number {
-      @include flex-center;
-      width: 40px;
-      height: 40px;
-      border-radius: $radius-full;
+      @include flex-center;          // MIXIN: flex center
+      width: $spacing-xl * 2;        // OPERATOR: mnożenie zmiennej (40px)
+      height: $spacing-xl * 2;       // OPERATOR: mnożenie zmiennej
+      border-radius: $radius-full;   // ZMIENNA: zaokrąglenie
       background: rgba($color-gold, 0.15);
       border: 1px solid rgba($color-gold, 0.4);
-      @include gold-text;
-      font-family: $font-heading;
-      font-size: $font-size-md;
+      @include gold-text;            // MIXIN: złoty gradient na tekście
+      font-family: $font-heading;    // ZMIENNA: font
+      font-size: $font-size-md;      // ZMIENNA: rozmiar
       font-weight: $font-weight-bold;
       flex-shrink: 0;
     }
 
     &-title {
-      font-family: $font-heading;
-      font-size: $font-size-lg;
+      font-family: $font-heading;    // ZMIENNA: font nagłówkowy
+      font-size: $font-size-lg;      // ZMIENNA: rozmiar czcionki
       font-weight: $font-weight-semibold;
-      color: $text-primary;
+      color: $text-primary;          // ZMIENNA: kolor tekstu
     }
 
     &-text {
-      font-size: $font-size-sm;
-      color: $text-secondary;
+      font-size: $font-size-sm;      // ZMIENNA: mały rozmiar
+      color: $text-secondary;        // ZMIENNA: kolor drugorzędny
       line-height: 1.7;
     }
 
     &-icon {
-      font-size: $font-size-3xl;
-      margin-bottom: -$spacing-xs;   // OPERATOR: ujemny margines
+      font-size: $font-size-3xl;     // ZMIENNA: duży rozmiar emoji
+      margin-bottom: -$spacing-xs;   // OPERATOR: ujemny margines (-4px)
     }
-  }
-}
-
-// --- Sekcja: Notacja szachowa -----------------------------------------------
-.notation {
-  background: $bg-primary;
-
-  &__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: $spacing-3xl;
-    align-items: start;
-
-    @include respond-to('md') {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  &__example {
-    @extend %glass-card;
-    padding: $spacing-xl;
-
-    &-title {
-      font-family: $font-heading;
-      font-size: $font-size-lg;
-      color: $text-primary;
-      margin-bottom: $spacing-md;
-      padding-bottom: $spacing-md;
-      border-bottom: 1px solid rgba($color-gold, 0.2);
-    }
-
-    &-moves {
-      display: grid;
-      grid-template-columns: auto 1fr 1fr;
-      gap: $spacing-xs $spacing-md;
-      align-items: center;
-      font-family: $font-mono;
-      font-size: $font-size-sm;
-    }
-
-    &-num {
-      color: $text-muted;
-      font-weight: $font-weight-semibold;
-    }
-
-    &-white {
-      color: $text-primary;
-      padding: $spacing-xs $spacing-sm;
-      border-radius: $radius-sm;
-      background: rgba(255,255,255,0.06);
-      cursor: default;
-      transition: background $transition-fast;
-
-      &:hover {
-        background: rgba($color-gold, 0.15);
-        color: $color-gold;
-      }
-    }
-
-    &-black {
-      color: $text-secondary;
-      padding: $spacing-xs $spacing-sm;
-      border-radius: $radius-sm;
-      cursor: default;
-      transition: background $transition-fast;
-
-      &:hover {
-        background: rgba($color-gold, 0.1);
-        color: $color-gold;
-      }
-    }
-  }
-
-  &__legend {
-    @include flex-center(column);
-    align-items: flex-start;
-    gap: $spacing-md;
-  }
-
-  &__legend-item {
-    @extend %glass-card;
-    width: 100%;
-    padding: $spacing-md $spacing-lg;
-    @include flex-between;
-    gap: $spacing-md;
-
-    &-symbol {
-      font-family: $font-mono;
-      font-size: $font-size-lg;
-      font-weight: $font-weight-bold;
-      @include gold-text;
-      min-width: 32px;
-      text-align: center;
-    }
-
-    &-desc {
-      flex: 1;
-      font-size: $font-size-sm;
-      color: $text-secondary;
-    }
-  }
-}
-
-// --- Sekcja CTA (Call To Action) -------------------------------------------
-.cta-section {
-  background: linear-gradient(135deg, $color-dark-accent 0%, $color-dark 100%);
-  position: relative;
-  overflow: hidden;
-
-  @include checkerboard-bg(rgba(255,255,255,0.02), transparent, 48px);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba($color-gold, 0.08), transparent);
-  }
-
-  &__inner {
-    @extend %container;
-    position: relative;
-    z-index: $z-base;
-    @include flex-center(column);
-    text-align: center;
-    gap: $spacing-xl;
-    padding-top: $spacing-4xl;
-    padding-bottom: $spacing-4xl;
-  }
-
-  &__badge {
-    @extend %badge;
-  }
-
-  &__title {
-    font-size: clamp($font-size-2xl, 4vw, $font-size-4xl);
-    max-width: 600px;
-
-    .highlight {
-      @include gold-text;
-    }
-  }
-
-  &__subtitle {
-    max-width: 500px;
-    color: $text-secondary;
-  }
-
-  &__actions {
-    display: flex;
-    gap: $spacing-md;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 }

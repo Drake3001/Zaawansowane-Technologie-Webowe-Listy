@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Szachy — Królewska Gra | Chess Master</title>
   <meta name="description" content="Odkryj historię, reguły i piękno szachów — jednej z najstarszych i najbardziej złożonych gier strategicznych na świecie." />
-  <meta name="keywords" content="szachy, chess, historia szachów, figury szachowe, zasady gry, notacja szachowa" />
+  <meta name="keywords" content="szachy, chess, historia szachów, figury szachowe, zasady gry" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♔</text></svg>" />
   <link rel="stylesheet" href="css/main.css" />
 </head>
@@ -20,9 +20,8 @@
       </a>
 
       <ul class="header__links" role="list">
-        <li><a href="#figury"    class="header__link" id="nav-pieces">Figury</a></li>
-        <li><a href="#zasady"    class="header__link" id="nav-rules">Zasady</a></li>
-        <li><a href="#notacja"   class="header__link" id="nav-notation">Notacja</a></li>
+        <li><a href="#figury"  class="header__link" id="nav-pieces">Figury</a></li>
+        <li><a href="#zasady"  class="header__link" id="nav-rules">Zasady</a></li>
       </ul>
 
       <a href="#figury" class="header__cta btn-primary btn--sm" id="header-cta">
@@ -56,6 +55,9 @@
             <a href="#figury" class="btn-primary btn--lg" id="hero-cta-primary">
               ♟ Poznaj figury
             </a>
+            <a href="#zasady" class="btn-outline btn--lg" id="hero-cta-secondary">
+              📋 Zasady gry
+            </a>
           </div>
 
           <div class="hero__stats">
@@ -80,7 +82,6 @@
           <div class="chessboard">
             <div class="chessboard__frame">
               <div class="chessboard__grid" id="hero-board" role="img" aria-label="Szachownica startowa">
-                <!-- Wiersze 8→1, kolumny a→h -->
                 <!-- Wiersz 8 (czarne figury) -->
                 <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♜</span></div>
                 <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♞</span></div>
@@ -334,122 +335,6 @@
       </div>
     </section>
 
-    <!-- ===== NOTACJA ===== -->
-    <section class="section notation" id="notacja" aria-labelledby="notation-title">
-      <div class="section__container">
-        <div class="section__header">
-          <span class="hero__badge" aria-label="Kategoria">📝 Notacja</span>
-          <h2 class="decorated-title" id="notation-title" style="margin-top: 1rem;">
-            Język <span class="gold-accent">szachów</span>
-          </h2>
-          <p>
-            Notacja algebraiczna to standardowy sposób zapisywania ruchów szachowych,
-            używany na całym świecie przez graczy i programy komputerowe.
-          </p>
-        </div>
-
-        <div class="notation__inner">
-          <!-- Przykładowa partia (Obrona Sycylijska) -->
-          <div class="notation__example" id="notation-example">
-            <h3 class="notation__example-title">
-              ♟ Obrona Sycylijska — Wariant Najdorfa
-            </h3>
-            <div class="notation__example-moves" role="table" aria-label="Ruchy partii szachowej">
-              <span class="notation__example-num" role="cell">1.</span>
-              <span class="notation__example-white" role="cell" title="e2-e4">e4</span>
-              <span class="notation__example-black" role="cell" title="c7-c5">c5</span>
-              <span class="notation__example-num" role="cell">2.</span>
-              <span class="notation__example-white" role="cell" title="Sg1-f3">Sf3</span>
-              <span class="notation__example-black" role="cell" title="d7-d6">d6</span>
-              <span class="notation__example-num" role="cell">3.</span>
-              <span class="notation__example-white" role="cell" title="d2-d4">d4</span>
-              <span class="notation__example-black" role="cell" title="c5xd4">cxd4</span>
-              <span class="notation__example-num" role="cell">4.</span>
-              <span class="notation__example-white" role="cell" title="Sf3xd4">Sxd4</span>
-              <span class="notation__example-black" role="cell" title="Sg8-f6">Sf6</span>
-              <span class="notation__example-num" role="cell">5.</span>
-              <span class="notation__example-white" role="cell" title="Sb1-c3">Sc3</span>
-              <span class="notation__example-black" role="cell" title="a7-a6">a6</span>
-              <span class="notation__example-num" role="cell">6.</span>
-              <span class="notation__example-white" role="cell" title="Gc1-g5">Gg5</span>
-              <span class="notation__example-black" role="cell" title="e7-e6">e6</span>
-              <span class="notation__example-num" role="cell">7.</span>
-              <span class="notation__example-white" role="cell" title="Dd1-d3">Hf3</span>
-              <span class="notation__example-black" role="cell" title="Dd8-b6">Hb6</span>
-            </div>
-          </div>
-
-          <!-- Legenda symboli notacji -->
-          <div class="notation__legend" id="notation-legend" aria-label="Legenda symboli notacji">
-            <article class="notation__legend-item" id="legend-king">
-              <span class="notation__legend-item-symbol">K / K</span>
-              <span class="notation__legend-item-desc">Król (King)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-queen">
-              <span class="notation__legend-item-symbol">H / Q</span>
-              <span class="notation__legend-item-desc">Hetman (Queen)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-rook">
-              <span class="notation__legend-item-symbol">W / R</span>
-              <span class="notation__legend-item-desc">Wieża (Rook)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-bishop">
-              <span class="notation__legend-item-symbol">G / B</span>
-              <span class="notation__legend-item-desc">Goniec (Bishop)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-knight">
-              <span class="notation__legend-item-symbol">S / N</span>
-              <span class="notation__legend-item-desc">Skoczek (kNight)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-capture">
-              <span class="notation__legend-item-symbol">x</span>
-              <span class="notation__legend-item-desc">Bicie figury</span>
-            </article>
-            <article class="notation__legend-item" id="legend-check">
-              <span class="notation__legend-item-symbol">+</span>
-              <span class="notation__legend-item-desc">Szach (atak na króla)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-checkmate">
-              <span class="notation__legend-item-symbol">#</span>
-              <span class="notation__legend-item-desc">Mat (koniec gry)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-castling-short">
-              <span class="notation__legend-item-symbol">0-0</span>
-              <span class="notation__legend-item-desc">Roszada krótka (kingside)</span>
-            </article>
-            <article class="notation__legend-item" id="legend-castling-long">
-              <span class="notation__legend-item-symbol">0-0-0</span>
-              <span class="notation__legend-item-desc">Roszada długa (queenside)</span>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CTA ===== -->
-    <section class="cta-section" id="graj" aria-labelledby="cta-title">
-      <div class="cta-section__inner">
-        <span class="cta-section__badge hero__badge">♔ Gotowy?</span>
-        <h2 class="cta-section__title" id="cta-title">
-          Zacznij swoją <span class="highlight">szachową przygodę</span> już dziś
-        </h2>
-        <p class="cta-section__subtitle">
-          Dołącz do milionów graczy na całym świecie i odkryj, dlaczego szachy
-          są nazywane królewską grą od ponad tysiąca lat.
-        </p>
-        <div class="cta-section__actions">
-          <a href="https://www.chess.com" target="_blank" rel="noopener"
-             class="btn-primary btn--lg" id="cta-chesscom">
-            ♟ Graj na Chess.com
-          </a>
-          <a href="https://lichess.org" target="_blank" rel="noopener"
-             class="btn-outline btn--lg" id="cta-lichess">
-            🐴 Lichess (darmowy)
-          </a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <!-- ===== FOOTER ===== -->
@@ -472,15 +357,14 @@
           </div>
         </div>
 
-        <!-- Kolumna 1 -->
+        <!-- Kolumna nawigacji -->
         <div class="footer__col">
-          <span class="footer__col-title">Nauka</span>
-          <a href="#figury"   class="footer__col-link" id="footer-link-pieces">Figury szachowe</a>
-          <a href="#zasady"   class="footer__col-link" id="footer-link-rules">Zasady gry</a>
-          <a href="#notacja"  class="footer__col-link" id="footer-link-notation">Notacja</a>
+          <span class="footer__col-title">Sekcje</span>
+          <a href="#figury"  class="footer__col-link" id="footer-link-pieces">Figury szachowe</a>
+          <a href="#zasady"  class="footer__col-link" id="footer-link-rules">Zasady gry</a>
         </div>
 
-        <!-- Kolumna 2 -->
+        <!-- Kolumna zasobów -->
         <div class="footer__col">
           <span class="footer__col-title">Zasoby</span>
           <a href="https://www.chess.com" target="_blank" rel="noopener"
@@ -489,17 +373,6 @@
              class="footer__col-link" id="footer-lichess">Lichess.org</a>
           <a href="https://www.fide.com" target="_blank" rel="noopener"
              class="footer__col-link" id="footer-fide">FIDE</a>
-          <a href="https://pl.wikipedia.org/wiki/Szachy" target="_blank" rel="noopener"
-             class="footer__col-link" id="footer-wiki">Wikipedia</a>
-        </div>
-
-        <!-- Kolumna 3 -->
-        <div class="footer__col">
-          <span class="footer__col-title">Mistrzowie</span>
-          <a href="#" class="footer__col-link" id="footer-carlsen">Magnus Carlsen</a>
-          <a href="#" class="footer__col-link" id="footer-kasparov">Garri Kasparow</a>
-          <a href="#" class="footer__col-link" id="footer-fischer">Bobby Fischer</a>
-          <a href="#" class="footer__col-link" id="footer-tal">Michaił Tal</a>
         </div>
       </div>
 
