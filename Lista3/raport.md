@@ -1,3 +1,53 @@
+# Raport - Lista3 (wersja uproszczona)
+
+## Co zostalo uproszczone
+
+- Strona zostala przebudowana do 3 prostych sekcji: Hero, Figury, Mini zasady.
+- Usunieto rozbudowany header/footer i ciezka, recznie wpisywana szachownice w HTML.
+- Struktura SCSS pozostala modularna: `base`, `abstracts`, `components`, `layout`.
+- Styl i tresc sa teraz bardziej "zadaniowe", z naciskiem na czytelny pokaz funkcji SASS.
+
+## Gdzie celowo uzyto funkcji SASS
+
+### 1) Karty figur (`scss/components/_cards.scss`)
+
+- **Zmienne:** kolory, spacing, rozmiary fontow (`$text-secondary`, `$spacing-xl`).
+- **Zagniezdzenia:** BEM (`.piece-card`, `&__icon`, `&__value`).
+- **Dziedziczenie:** `@extend %glass-card` oraz `@extend %badge`.
+- **Operatory:** np. `font-size: $font-size-3xl * 1.1`.
+- **Mixiny:** `@include flex-center(column)`, `@include gold-hover-glow`, `@include card-grid(...)`.
+
+### 2) Sekcja zasad (`scss/layout/_sections.scss`)
+
+- **Mixiny:** `@include card-grid(...)`, `@include checkerboard-bg(...)`, `@include flex-center(...)`.
+- **Dziedziczenie:** `%container`, `%section-header`, `%badge`, `%glass-card`.
+- **Operatory:** np. `padding: $spacing-lg * 1.2`, `width: $spacing-xl * 1.4`.
+- **Zagniezdzenia:** struktura `rules__card-*` w jednym bloku.
+
+### 3) Hero + CTA (`scss/layout/_hero.scss`, `scss/components/_buttons.scss`)
+
+- **Mixiny:** `section-base`, `checkerboard-bg`, `btn-base`.
+- **Zmienne:** gradienty, cienie, kolory i przejscia.
+- **Zagniezdzenia:** `btn` z wariantami `&--primary`, `&--ghost`, `&--lg`.
+- **Operatory:** np. `gap: $spacing-sm * 2`, `padding: $spacing-md * 1.2 $spacing-2xl`.
+
+## Struktura plikow SCSS po zmianach
+
+- `scss/main.scss` - importy tylko potrzebnych modulow.
+- `scss/base/_variables.scss` - centralne wartosci projektu.
+- `scss/abstracts/_mixins.scss` - mixiny reuzywalne.
+- `scss/abstracts/_placeholders.scss` - placeholdery do `@extend`.
+- `scss/components/_buttons.scss` - przyciski i warianty.
+- `scss/components/_cards.scss` - karty figur.
+- `scss/layout/_hero.scss` - sekcja startowa.
+- `scss/layout/_sections.scss` - sekcje i karty zasad.
+
+## Kompilacja
+
+- SCSS skompilowano do `css/main.css` poleceniem:
+  - `sass scss/main.scss css/main.css`
+- Kompilacja przechodzi poprawnie.
+- Pozostaja ostrzezenia deprecacji `@import` (do migracji na `@use` w kolejnym kroku).
 # Raport: Funkcjonalności SASS/SCSS w projekcie ChessMaster
 
 Strona zawiera **3 sekcje treści**: Hero (z szachownicą) · Figury · Zasady  

@@ -3,389 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Szachy — Królewska Gra | Chess Master</title>
-  <meta name="description" content="Odkryj historię, reguły i piękno szachów — jednej z najstarszych i najbardziej złożonych gier strategicznych na świecie." />
-  <meta name="keywords" content="szachy, chess, historia szachów, figury szachowe, zasady gry" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♔</text></svg>" />
+  <title>Szachy od zera</title>
+  <meta
+    name="description"
+    content="Prosta strona o szachach: figury, szybkie zasady i pierwszy plan nauki."
+  />
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-
-  <!-- ===== HEADER ===== -->
-  <header class="header" role="banner">
-    <nav class="header__nav" aria-label="Nawigacja główna">
-      <a href="#hero" class="header__logo" id="logo-link">
-        <span class="header__logo-icon" aria-hidden="true">♔</span>
-        <span class="header__logo-text"><span>Chess</span>Master</span>
-      </a>
-
-      <ul class="header__links" role="list">
-        <li><a href="#figury"  class="header__link" id="nav-pieces">Figury</a></li>
-        <li><a href="#zasady"  class="header__link" id="nav-rules">Zasady</a></li>
-      </ul>
-
-      <a href="#figury" class="header__cta btn-primary btn--sm" id="header-cta">
-        ♟ Zacznij grać
-      </a>
-    </nav>
-  </header>
-
-  <main id="hero">
-
-    <!-- ===== HERO ===== -->
-    <section class="hero" aria-labelledby="hero-title">
+  <main>
+    <section class="hero" id="start" aria-labelledby="hero-title">
       <div class="hero__inner">
-
-        <!-- Lewa kolumna: tekst -->
-        <div class="hero__content">
-          <span class="hero__badge" aria-label="Kategoria">♔ Królewska Gra</span>
-
-          <h1 class="hero__title" id="hero-title">
-            Mistrzostwo<br />
-            <span class="highlight">Strategii</span><br />
-            i Umysłu
-          </h1>
-
-          <p class="hero__subtitle">
-            Szachy to gra dla dwóch graczy, która od ponad 1500 lat fascynuje
-            wojowników, filozofów i geniuszy. Poznaj jej głębię.
-          </p>
-
-          <div class="hero__actions">
-            <a href="#figury" class="btn-primary btn--lg" id="hero-cta-primary">
-              ♟ Poznaj figury
-            </a>
-            <a href="#zasady" class="btn-outline btn--lg" id="hero-cta-secondary">
-              📋 Zasady gry
-            </a>
-          </div>
-
-          <div class="hero__stats">
-            <div class="hero__stat">
-              <span class="hero__stat-value">500M+</span>
-              <span class="hero__stat-label">Graczy na świecie</span>
-            </div>
-            <div class="hero__stat">
-              <span class="hero__stat-value">1500</span>
-              <span class="hero__stat-label">Lat historii</span>
-            </div>
-            <div class="hero__stat">
-              <span class="hero__stat-value">10<sup>120</sup></span>
-              <span class="hero__stat-label">Możliwych partii</span>
-            </div>
-          </div>
+        <p class="hero__badge">Szachy w 5 minut</p>
+        <h1 class="hero__title" id="hero-title">
+          Zacznij grać
+          <span class="gold-accent">w szachy</span>
+        </h1>
+        <p class="hero__subtitle">
+          Minimum teorii, maksimum praktyki. Poznaj figury i 3 zasady, aby
+          rozegrać pierwszą partię już dziś.
+        </p>
+        <div class="hero__actions">
+          <a href="#figury" class="btn btn--primary btn--lg">Poznaj figury</a>
+          <a href="#zagraj" class="btn btn--ghost btn--lg">Zagraj teraz</a>
         </div>
-
-        <!-- Prawa kolumna: szachownica dekoracyjna -->
-        <div class="hero__board-wrapper" aria-hidden="true">
-          <div class="hero__board-glow"></div>
-          <div class="chessboard">
-            <div class="chessboard__frame">
-              <div class="chessboard__grid" id="hero-board" role="img" aria-label="Szachownica startowa">
-                <!-- Wiersz 8 (czarne figury) -->
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♜</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♞</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♝</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♛</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♚</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♝</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♞</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♜</span></div>
-                <!-- Wiersz 7 (czarne pionki) -->
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--black">♟</span></div>
-                <!-- Wiersz 6 (puste) -->
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <!-- Wiersz 5 (puste) -->
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <!-- Wiersz 4 (puste) -->
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark chessboard__square--highlight"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <!-- Wiersz 3 (puste) -->
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark chessboard__square--possible"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark chessboard__square--possible"></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"></div>
-                <!-- Wiersz 2 (białe pionki) -->
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♙</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--white">♙</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♙</span></div>
-                <div class="chessboard__square chessboard__square--light"></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♙</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--white">♙</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♙</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--white">♙</span></div>
-                <!-- Wiersz 1 (białe figury) -->
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--white">♖</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♘</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--white">♗</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♕</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--white">♔</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♗</span></div>
-                <div class="chessboard__square chessboard__square--light"><span class="chessboard__piece chessboard__piece--white">♘</span></div>
-                <div class="chessboard__square chessboard__square--dark"><span class="chessboard__piece chessboard__piece--white">♖</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero__scroll" aria-hidden="true">
-        <span class="hero__scroll-arrow">↓</span>
-        <span>Przewiń</span>
       </div>
     </section>
 
-    <!-- ===== FIGURY ===== -->
-    <section class="section" id="figury" aria-labelledby="pieces-title" style="background: var(--bg-primary, #1a1a2e);">
+    <section class="section" id="figury" aria-labelledby="pieces-title">
       <div class="section__container">
-        <div class="section__header">
-          <span class="hero__badge" aria-label="Kategoria">♟ Figury</span>
-          <h2 class="decorated-title" id="pieces-title" style="margin-top: 1rem;">
-            Szóstka <span class="gold-accent">bohaterów</span>
-          </h2>
-          <p>
-            W szachach każdy gracz dysponuje 16 figurami — 6 różnych rodzajów,
-            każda z unikalnym wzorcem ruchu i własną wartością strategiczną.
-          </p>
-        </div>
+        <header class="section__header">
+          <p class="section__eyebrow">Figury</p>
+          <h2 class="decorated-title" id="pieces-title">Figury szachowe</h2>
+        </header>
 
         <div class="pieces-grid">
-          <!-- Król -->
-          <article class="piece-card" id="piece-king">
-            <div class="piece-card__icon" aria-hidden="true">♔</div>
+          <article class="piece-card">
+            <p class="piece-card__icon" aria-hidden="true">♔</p>
             <h3 class="piece-card__name">Król</h3>
-            <span class="piece-card__value">∞ — bezcenny</span>
-            <p class="piece-card__move">
-              Porusza się o <strong>1 pole</strong> w dowolnym kierunku.
-              Najważniejsza figura — jej utrata oznacza koniec gry.
-            </p>
+            <p class="piece-card__value">Bezcenny</p>
+            <p class="piece-card__move">Rusza się o 1 pole w każdym kierunku. Trzeba go chronić za wszelką cenę.</p>
           </article>
 
-          <!-- Hetman/Królowa -->
-          <article class="piece-card" id="piece-queen">
-            <div class="piece-card__icon" aria-hidden="true">♕</div>
+          <article class="piece-card">
+            <p class="piece-card__icon" aria-hidden="true">♕</p>
             <h3 class="piece-card__name">Hetman</h3>
-            <span class="piece-card__value">♟♟♟♟♟♟♟♟♟ — 9 pkt</span>
-            <p class="piece-card__move">
-              Porusza się o <strong>dowolną liczbę pól</strong>
-              poziomo, pionowo i po skosie. Najsilniejsza figura w grze.
-            </p>
+            <p class="piece-card__value">Wartość: 9</p>
+            <p class="piece-card__move">Najsilniejsza figura — bije pionowo, poziomo i po skosie na dowolną odległość.</p>
           </article>
 
-          <!-- Wieża -->
-          <article class="piece-card" id="piece-rook">
-            <div class="piece-card__icon" aria-hidden="true">♖</div>
+          <article class="piece-card">
+            <p class="piece-card__icon" aria-hidden="true">♖</p>
             <h3 class="piece-card__name">Wieża</h3>
-            <span class="piece-card__value">♟♟♟♟♟ — 5 pkt</span>
-            <p class="piece-card__move">
-              Porusza się o <strong>dowolną liczbę pól</strong>
-              poziomo lub pionowo. Aktywna zwłaszcza w końcówce.
-            </p>
+            <p class="piece-card__value">Wartość: 5</p>
+            <p class="piece-card__move">Porusza się poziomo i pionowo. Niezbędna w końcówce i podczas roszady.</p>
           </article>
 
-          <!-- Goniec -->
-          <article class="piece-card" id="piece-bishop">
-            <div class="piece-card__icon" aria-hidden="true">♗</div>
+          <article class="piece-card">
+            <p class="piece-card__icon" aria-hidden="true">♗</p>
             <h3 class="piece-card__name">Goniec</h3>
-            <span class="piece-card__value">♟♟♟ — 3 pkt</span>
-            <p class="piece-card__move">
-              Porusza się o <strong>dowolną liczbę pól po skosie</strong>.
-              Zawsze pozostaje na polach jednego koloru.
-            </p>
+            <p class="piece-card__value">Wartość: 3</p>
+            <p class="piece-card__move">Bije wyłącznie po skosie. Zawsze pozostaje na polach jednego koloru.</p>
           </article>
 
-          <!-- Skoczek -->
-          <article class="piece-card" id="piece-knight">
-            <div class="piece-card__icon" aria-hidden="true">♘</div>
+          <article class="piece-card">
+            <p class="piece-card__icon" aria-hidden="true">♘</p>
             <h3 class="piece-card__name">Skoczek</h3>
-            <span class="piece-card__value">♟♟♟ — 3 pkt</span>
-            <p class="piece-card__move">
-              Porusza się w kształcie litery <strong>„L"</strong>:
-              2 pola w jednym kierunku, 1 w prostopadłym.
-              Jedyna figura, która przeskakuje inne.
-            </p>
+            <p class="piece-card__value">Wartość: 3</p>
+            <p class="piece-card__move">Ruch w kształcie litery L. Jedyna figura przeskakująca inne.</p>
           </article>
 
-          <!-- Pionek -->
-          <article class="piece-card" id="piece-pawn">
-            <div class="piece-card__icon" aria-hidden="true">♙</div>
+          <article class="piece-card">
+            <p class="piece-card__icon" aria-hidden="true">♙</p>
             <h3 class="piece-card__name">Pionek</h3>
-            <span class="piece-card__value">♟ — 1 pkt</span>
-            <p class="piece-card__move">
-              Porusza się <strong>do przodu o 1 pole</strong>
-              (2 z pozycji startowej), bije skosem. Po dojściu do końca — promocja!
-            </p>
+            <p class="piece-card__value">Wartość: 1</p>
+            <p class="piece-card__move">Idzie do przodu, bije skosem. Po dojściu do końca — awansuje!</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== ZASADY ===== -->
-    <section class="section rules" id="zasady" aria-labelledby="rules-title">
+    <section class="section play" id="zagraj" aria-labelledby="play-title">
       <div class="section__container">
-        <div class="section__header">
-          <span class="hero__badge" aria-label="Kategoria">📋 Zasady</span>
-          <h2 class="decorated-title" id="rules-title" style="margin-top: 1rem;">
-            Jak grać <span class="gold-accent">w szachy?</span>
-          </h2>
-          <p>
-            Poznaj podstawowe zasady i specjalne ruchy, które czynią szachy
-            tak wyjątkową i bogatą strategicznie grą.
-          </p>
-        </div>
+        <header class="section__header">
+          <p class="section__eyebrow">Online</p>
+          <h2 class="decorated-title" id="play-title">Zagraj teraz</h2>
+        </header>
 
-        <div class="rules__grid">
-          <article class="rules__card" id="rule-objective">
-            <div class="rules__card-icon" aria-hidden="true">🎯</div>
-            <div class="rules__card-number" aria-label="Zasada 1">1</div>
-            <h3 class="rules__card-title">Cel gry</h3>
-            <p class="rules__card-text">
-              Cel gry to danie szacha matowego królewi przeciwnika.
-              Mat oznacza, że król jest zaatakowany i nie ma żadnego
-              legalnego ruchu, który mógłby go uratować.
+        <div class="play__grid">
+          <a class="play-card play-card--best" href="https://www.chess.com" target="_blank" rel="noopener">
+            <p class="play-card__badge">Polecamy</p>
+            <p class="play-card__icon" aria-hidden="true">♛</p>
+            <h3 class="play-card__name">Chess.com</h3>
+            <p class="play-card__desc">
+              Największy serwis szachowy na świecie. Tysiące partii online,
+              kursy wideo, zadania taktyczne i tryb dla początkujących.
             </p>
-          </article>
+            <span class="play-card__cta">Graj na Chess.com →</span>
+          </a>
 
-          <article class="rules__card" id="rule-turn">
-            <div class="rules__card-icon" aria-hidden="true">🔄</div>
-            <div class="rules__card-number" aria-label="Zasada 2">2</div>
-            <h3 class="rules__card-title">Kolejność ruchów</h3>
-            <p class="rules__card-text">
-              Gracze wykonują ruchy na zmianę. Białe zawsze ruszają się
-              pierwsze. W każdym ruchu należy poruszyć dokładnie jedną
-              figurą (z wyjątkiem roszady).
+          <a class="play-card" href="https://lichess.org" target="_blank" rel="noopener">
+            <p class="play-card__icon" aria-hidden="true">♜</p>
+            <h3 class="play-card__name">Lichess.org</h3>
+            <p class="play-card__desc">
+              W pełni otwartoźródłowa i bezpłatna platforma szachowa.
+              Brak reklam, bez subskrypcji — czyste szachy.
             </p>
-          </article>
-
-          <article class="rules__card" id="rule-castling">
-            <div class="rules__card-icon" aria-hidden="true">🏰</div>
-            <div class="rules__card-number" aria-label="Zasada 3">3</div>
-            <h3 class="rules__card-title">Roszada</h3>
-            <p class="rules__card-text">
-              Jednoczesny ruch króla i wieży. Król przesuwa się o 2 pola
-              w kierunku wieży, a wieża „przeskakuje" na drugą stronę.
-              Możliwa tylko jeśli obie figury nie wykonały jeszcze ruchu.
-            </p>
-          </article>
-
-          <article class="rules__card" id="rule-en-passant">
-            <div class="rules__card-icon" aria-hidden="true">⚡</div>
-            <div class="rules__card-number" aria-label="Zasada 4">4</div>
-            <h3 class="rules__card-title">Bicie w przelocie</h3>
-            <p class="rules__card-text">
-              Specjalne bicie pionkiem. Gdy przeciwnik przesunie pionka
-              o 2 pola z linii startowej obok naszego pionka, możemy
-              go zbić — jakby przesunął się tylko o 1 pole.
-            </p>
-          </article>
-
-          <article class="rules__card" id="rule-promotion">
-            <div class="rules__card-icon" aria-hidden="true">👑</div>
-            <div class="rules__card-number" aria-label="Zasada 5">5</div>
-            <h3 class="rules__card-title">Promocja pionka</h3>
-            <p class="rules__card-text">
-              Gdy pionek dotrze do ostatniej linii planszy, zostaje
-              natychmiast awansowany do hetmana, wieży, gońca lub
-              skoczka — niezależnie od figurek już na planszy.
-            </p>
-          </article>
-
-          <article class="rules__card" id="rule-draw">
-            <div class="rules__card-icon" aria-hidden="true">🤝</div>
-            <div class="rules__card-number" aria-label="Zasada 6">6</div>
-            <h3 class="rules__card-title">Remis i pat</h3>
-            <p class="rules__card-text">
-              Pat — gracz, którego ruch, ma tylko ruchy wystawiające
-              króla na szach. Remis: zgoda obu graczy, trzykrotne
-              powtórzenie pozycji, lub 50 ruchów bez bicia.
-            </p>
-          </article>
+            <span class="play-card__cta">Graj na Lichess →</span>
+          </a>
         </div>
       </div>
     </section>
-
   </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <div class="footer__top">
-        <!-- Brand -->
-        <div class="footer__brand">
-          <a href="#hero" class="footer__logo" id="footer-logo">
-            ♔ <span>Chess</span>Master
-          </a>
-          <p class="footer__tagline">
-            Twoje źródło wiedzy o królewskiej grze — historii, zasadach
-            i strategiach szachowych.
-          </p>
-          <div class="footer__social" aria-label="Media społecznościowe">
-            <a href="#" class="footer__social-link" id="social-twitter" aria-label="Twitter">𝕏</a>
-            <a href="#" class="footer__social-link" id="social-youtube" aria-label="YouTube">▶</a>
-            <a href="#" class="footer__social-link" id="social-discord" aria-label="Discord">💬</a>
-          </div>
-        </div>
-
-        <!-- Kolumna nawigacji -->
-        <div class="footer__col">
-          <span class="footer__col-title">Sekcje</span>
-          <a href="#figury"  class="footer__col-link" id="footer-link-pieces">Figury szachowe</a>
-          <a href="#zasady"  class="footer__col-link" id="footer-link-rules">Zasady gry</a>
-        </div>
-
-        <!-- Kolumna zasobów -->
-        <div class="footer__col">
-          <span class="footer__col-title">Zasoby</span>
-          <a href="https://www.chess.com" target="_blank" rel="noopener"
-             class="footer__col-link" id="footer-chesscom">Chess.com</a>
-          <a href="https://lichess.org" target="_blank" rel="noopener"
-             class="footer__col-link" id="footer-lichess">Lichess.org</a>
-          <a href="https://www.fide.com" target="_blank" rel="noopener"
-             class="footer__col-link" id="footer-fide">FIDE</a>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p class="footer__copy">
-          © 2025 <span>ChessMaster</span> — Strona edukacyjna o szachach. Lista 3 — SCSS/SASS.
-        </p>
-        <p class="footer__made-with">
-          Wykonano z <span>♥</span> i pasją do szachów
-        </p>
-      </div>
-    </div>
-  </footer>
-
 </body>
 </html>

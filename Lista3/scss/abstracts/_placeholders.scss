@@ -1,37 +1,25 @@
-// ==========================================================================
-// PLACEHOLDERY (Placeholders)
-// Używane z @extend — style do dziedziczenia bez generowania dodatkowych klas
-// ==========================================================================
-
-// --- Karta z efektem szkła ---
 %glass-card {
-  @include glass();
+  @include glass(0.07, 12px);
   border-radius: $radius-lg;
   box-shadow: $shadow-md;
   transition: all $transition-base;
 
   &:hover {
-    @include glass(0.12);
+    @include glass(0.12, 14px);
     box-shadow: $shadow-lg;
   }
 }
 
-// --- Kontener strony: max-width + wyśrodkowanie ---
 %container {
   max-width: $max-width;
   margin: 0 auto;
-  padding: 0 $spacing-xl;
+  padding: 0 $spacing-lg;
 
   @include respond-to('md') {
-    padding: 0 $spacing-lg;
-  }
-
-  @include respond-to('sm') {
     padding: 0 $spacing-md;
   }
 }
 
-// --- Etykieta ze złotym obramowaniem ---
 %badge {
   display: inline-flex;
   align-items: center;
@@ -47,10 +35,9 @@
   background: rgba($color-gold, 0.1);
 }
 
-// --- Nagłówek sekcji: wyśrodkowany, z marginesem ---
 %section-header {
   text-align: center;
-  margin-bottom: $spacing-3xl;
+  margin-bottom: $spacing-2xl;
 
   h2 {
     margin-bottom: $spacing-md;
@@ -59,44 +46,5 @@
   p {
     max-width: 600px;
     margin: 0 auto;
-  }
-}
-
-// --- Linia pozioma z gradientem ---
-%divider {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba($color-gold, 0.4),
-    transparent
-  );
-  margin: $spacing-xl 0;
-}
-
-// --- Element interaktywny: bazowe przejście ---
-%interactive {
-  cursor: pointer;
-  user-select: none;
-  transition: all $transition-base;
-
-  &:focus-visible {
-    outline: 2px solid $color-gold;
-    outline-offset: 2px;
-  }
-}
-
-// --- Nakładka ciemna na zdjęcia tła ---
-%dark-overlay {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: $bg-overlay;
-    z-index: $z-base;
   }
 }
