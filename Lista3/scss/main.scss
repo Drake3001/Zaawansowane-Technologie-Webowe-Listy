@@ -1,0 +1,32 @@
+// ==========================================================================
+// MAIN.SCSS — Punkt wejścia (Entry Point)
+//
+// Kolejność importów jest ważna:
+//  1. Abstrakcje (zmienne, mixiny, placeholdery) — bez generowania CSS
+//  2. Baza (reset, typografia) — globalne style
+//  3. Komponenty — bloki UI
+//  4. Layout — struktura strony
+//
+// Uwaga: @use 'sass:math' musi być zadeklarowane w każdym pliku partial
+// który korzysta z funkcji math.div() — nie można go przekazać przez @import.
+// ==========================================================================
+
+// 1. Abstrakcje (nie generują CSS, tylko definicje)
+@import 'base/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
+
+// 2. Baza
+@import 'base/reset';
+@import 'base/typography';
+
+// 3. Komponenty
+@import 'components/buttons';
+@import 'components/board';
+@import 'components/cards';
+
+// 4. Layout (używają komponentów)
+@import 'layout/header';
+@import 'layout/hero';
+@import 'layout/sections';
+@import 'layout/footer';

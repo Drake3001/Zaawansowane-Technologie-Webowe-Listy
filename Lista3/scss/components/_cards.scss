@@ -1,0 +1,95 @@
+// ==========================================================================
+// KARTY FIGUR SZACHOWYCH (Piece Cards)
+// Siatka kart z opisem każdej figury, dziedziczenie z %glass-card
+// ==========================================================================
+
+// --- Siatka kart ---
+.pieces-grid {
+  @include card-grid(240px);
+}
+
+// --- Karta figury ---
+.piece-card {
+  @extend %glass-card;        // DZIEDZICZENIE: efekt szkła
+  @include gold-hover-glow;   // MIXIN: hover z poświatą
+  padding: $spacing-xl;
+  @include flex-center(column);
+  gap: $spacing-md;
+  text-align: center;
+  cursor: default;
+
+  // Efekt wejścia (przy ładowaniu strony)
+  &:nth-child(1) { animation: fadeInUp 0.5s 0.1s forwards; opacity: 0; }
+  &:nth-child(2) { animation: fadeInUp 0.5s 0.2s forwards; opacity: 0; }
+  &:nth-child(3) { animation: fadeInUp 0.5s 0.3s forwards; opacity: 0; }
+  &:nth-child(4) { animation: fadeInUp 0.5s 0.4s forwards; opacity: 0; }
+  &:nth-child(5) { animation: fadeInUp 0.5s 0.5s forwards; opacity: 0; }
+  &:nth-child(6) { animation: fadeInUp 0.5s 0.6s forwards; opacity: 0; }
+
+  // --- Emoji figury ---
+  &__icon {
+    font-size: $font-size-5xl * 0.8;  // OPERATOR: skalowanie
+    line-height: 1;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    transition: transform $transition-spring;
+
+    .piece-card:hover & {
+      transform: scale(1.2) rotate(-5deg);
+    }
+  }
+
+  // --- Nazwa figury ---
+  &__name {
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    margin-bottom: -$spacing-xs;
+  }
+
+  // --- Wartość punktowa ---
+  &__value {
+    @extend %badge;      // DZIEDZICZENIE: styl etykiety
+  }
+
+  // --- Opis ruchu figury ---
+  &__move {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    line-height: 1.6;
+
+    strong {
+      color: $color-gold;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  // --- Miniaturowa szachownica z ruchem figury ---
+  &__mini-board {
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 130px;           // OPERATOR: limit proporcji
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    border-radius: $radius-sm;
+    overflow: hidden;
+    border: 1px solid rgba($color-gold, 0.2);
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $font-size-xs;
+      aspect-ratio: 1;
+
+      &.light { background: rgba($board-light-square, 0.3); }
+      &.dark  { background: rgba($board-dark-square, 0.3); }
+      &.piece { color: $color-gold; font-size: $font-size-md; }
+      &.mark  {
+        background: rgba($color-gold, 0.25);
+        border-radius: 50%;
+      }
+    }
+  }
+}

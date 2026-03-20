@@ -1,0 +1,115 @@
+// ==========================================================================
+// ZMIENNE (Variables)
+// Centralne źródło wartości używanych w całym projekcie
+// ==========================================================================
+
+// --- Paleta kolorów ---
+$color-black:        #0d0d0d;
+$color-dark:         #1a1a2e;
+$color-dark-mid:     #16213e;
+$color-dark-accent:  #0f3460;
+$color-gold:         #e2b04a;
+$color-gold-light:   #f0c96a;
+$color-gold-dark:    #b8882a;
+$color-cream:        #f5e6c8;
+$color-cream-light:  #fdf3e0;
+$color-white:        #ffffff;
+
+// --- Kolory szachownicy ---
+$board-light-square: #f0d9b5;
+$board-dark-square:  #b58863;
+$board-border:       #8b6914;
+$board-border-dark:  #5c430a;
+
+// --- Kolory tekstu ---
+$text-primary:       #f5e6c8;
+$text-secondary:     #b8a898;
+$text-muted:         #6b5e5e;
+$text-dark:          #1a1a2e;
+$text-gold:          $color-gold;
+
+// --- Kolory tła ---
+$bg-primary:         $color-dark;
+$bg-secondary:       $color-dark-mid;
+$bg-card:            rgba(255, 255, 255, 0.05);
+$bg-card-hover:      rgba(255, 255, 255, 0.08);
+$bg-overlay:         rgba(0, 0, 0, 0.6);
+
+// --- Typografia ---
+$font-heading:       'Playfair Display', Georgia, serif;
+$font-body:          'Inter', 'Segoe UI', sans-serif;
+$font-mono:          'Courier New', monospace;
+
+// --- Skala rozmiaru czcionki ---
+$font-size-xs:       0.75rem;    // 12px
+$font-size-sm:       0.875rem;   // 14px
+$font-size-base:     1rem;       // 16px
+$font-size-md:       1.125rem;   // 18px
+$font-size-lg:       1.25rem;    // 20px
+$font-size-xl:       1.5rem;     // 24px
+$font-size-2xl:      2rem;       // 32px
+$font-size-3xl:      2.5rem;     // 40px
+$font-size-4xl:      3.5rem;     // 56px
+$font-size-5xl:      5rem;       // 80px
+
+// --- Grubości czcionki ---
+$font-weight-light:   300;
+$font-weight-regular: 400;
+$font-weight-medium:  500;
+$font-weight-semibold: 600;
+$font-weight-bold:    700;
+
+// --- Odstępy (spacing) ---
+$spacing-xs:   0.25rem;   // 4px
+$spacing-sm:   0.5rem;    // 8px
+$spacing-md:   1rem;      // 16px
+$spacing-lg:   1.5rem;    // 24px
+$spacing-xl:   2rem;      // 32px
+$spacing-2xl:  3rem;      // 48px
+$spacing-3xl:  4rem;      // 64px
+$spacing-4xl:  6rem;      // 96px
+
+// --- Wymiary ---
+$max-width:          1200px;
+$board-size:         480px;
+$square-size:        60px;   // $board-size / 8 = 480px / 8 (OPERATOR ARYTMETYCZNY: dzielenie)
+$board-border-width: 24px;
+$header-height:      5rem;       // 80px
+
+// --- Zaokrąglenia ---
+$radius-sm:     4px;
+$radius-md:     8px;
+$radius-lg:     16px;
+$radius-xl:     24px;
+$radius-full:   9999px;
+
+// --- Cienie ---
+$shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-md:     0 4px 20px rgba(0, 0, 0, 0.4);
+$shadow-lg:     0 8px 40px rgba(0, 0, 0, 0.5);
+$shadow-gold:   0 4px 20px rgba(226, 176, 74, 0.3);
+$shadow-glow:   0 0 30px rgba(226, 176, 74, 0.4);
+
+// --- Przejścia (transitions) ---
+$transition-fast:   0.15s ease;
+$transition-base:   0.3s ease;
+$transition-slow:   0.5s ease;
+$transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+// --- Gradienty ---
+$gradient-dark:  linear-gradient(135deg, $color-dark 0%, $color-dark-mid 50%, $color-dark-accent 100%);
+$gradient-gold:  linear-gradient(135deg, $color-gold-dark 0%, $color-gold 60%, $color-gold-light 100%);
+$gradient-board: linear-gradient(145deg, $board-border 0%, $board-border-dark 100%);
+
+// --- Z-index ---
+$z-base:    1;
+$z-dropdown: 100;
+$z-sticky:  200;
+$z-overlay: 300;
+$z-modal:   400;
+
+// --- Breakpoints ---
+$bp-sm:   576px;
+$bp-md:   768px;
+$bp-lg:   992px;
+$bp-xl:   1200px;

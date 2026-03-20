@@ -1,0 +1,108 @@
+// ==========================================================================
+// HEADER
+// Nawigacja górna z logo i linkami
+// ==========================================================================
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  z-index: $z-sticky;
+  @include glass(0.06, 20px);
+  border-bottom: 1px solid rgba($color-gold, 0.15);
+  transition: all $transition-base;
+
+  // --- Wewnętrzny kontener navbara ---
+  &__nav {
+    @extend %container;
+    height: 100%;
+    @include flex-between;
+  }
+
+  // --- Logo ---
+  &__logo {
+    @include flex-center;
+    gap: $spacing-sm;
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+
+    &-icon {
+      font-size: $font-size-2xl;
+      line-height: 1;
+    }
+
+    &-text {
+      span {
+        @include gold-text;
+      }
+    }
+  }
+
+  // --- Lista linków nawigacyjnych ---
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xl;
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+
+  // --- Pojedynczy link ---
+  &__link {
+    @extend %interactive;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-secondary;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+
+    // Podkreślenie animowane (zagnieżdżenie)
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $gradient-gold;
+      border-radius: $radius-full;
+      transition: width $transition-base;
+    }
+
+    &:hover {
+      color: $text-primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // --- Przycisk CTA w nagłówku ---
+  &__cta {
+    @include btn-base($spacing-sm, $spacing-lg);
+    background: $gradient-gold;
+    color: $color-dark;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    box-shadow: $shadow-gold;
+
+    &:hover {
+      box-shadow: $shadow-glow;
+      transform: translateY(-2px);
+    }
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,424 @@
+// ==========================================================================
+// SEKCJE STRONY (Sections)
+// O grze, historia, zasady, notacja
+// ==========================================================================
+
+// ---- Sekcja bazowa -----
+.section {
+  @include section-base;
+  position: relative;
+
+  &__container {
+    @extend %container;
+  }
+
+  &__header {
+    @extend %section-header;
+  }
+
+  &__divider {
+    @extend %divider;
+  }
+}
+
+// --- Sekcja: O grze w szachy -------------------------------------------------
+.about {
+  background: $bg-secondary;
+  @include checkerboard-bg(rgba(255,255,255,0.02), transparent, 50px);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+    align-items: center;
+
+    @include respond-to('md') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__image-block {
+    position: relative;
+
+    // Podwójne obramowanie z gradientem
+    @include gradient-border(2px, $gradient-gold, $radius-lg);
+  }
+
+  &__image-inner {
+    @include glass(0.08);
+    border-radius: $radius-lg;
+    padding: $spacing-2xl;
+    @include flex-center(column);
+    gap: $spacing-lg;
+    min-height: 320px;
+  }
+
+  &__big-piece {
+    font-size: 120px;      // OPERATOR: stały duży rozmiar
+    line-height: 1;
+    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.6));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px);  }
+    50%       { transform: translateY(-12px); }
+  }
+
+  &__image-caption {
+    font-family: $font-heading;
+    font-style: italic;
+    color: $text-secondary;
+    font-size: $font-size-md;
+    text-align: center;
+  }
+
+  &__text {
+    @include flex-center(column);
+    align-items: flex-start;
+    gap: $spacing-lg;
+  }
+
+  &__badge {
+    @extend %badge;
+  }
+
+  // Fakty w formie listy z ikoną —
+  &__facts {
+    width: 100%;
+    @include flex-center(column);
+    align-items: flex-start;
+    gap: $spacing-md;
+  }
+
+  &__fact {
+    @extend %glass-card;
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    @include flex-between;
+    gap: $spacing-md;
+
+    &-icon {
+      font-size: $font-size-xl;
+      flex-shrink: 0;
+    }
+
+    &-text {
+      flex: 1;
+
+      strong {
+        display: block;
+        color: $text-primary;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        margin-bottom: $spacing-xs;
+      }
+
+      span {
+        color: $text-muted;
+        font-size: $font-size-xs;
+      }
+    }
+
+    &-value {
+      @include gold-text;
+      font-family: $font-heading;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+// --- Sekcja: Historia (Timeline) --------------------------------------------
+.history {
+  background: $bg-primary;
+
+  &__timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+
+    // Pionowa linia osi czasu
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, rgba($color-gold, 0.4), transparent);
+      transform: translateX(-50%);
+
+      @include respond-to('md') {
+        left: 20px;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-2xl;
+    align-items: flex-start;
+
+    // Naprzemienne wyrównanie
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+
+      @include respond-to('md') {
+        flex-direction: row;
+      }
+
+      .history__item-content {
+        text-align: right;
+
+        @include respond-to('md') {
+          text-align: left;
+        }
+      }
+    }
+
+    &-dot {
+      @include flex-center;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: $radius-full;
+      background: $gradient-gold;
+      color: $color-dark;
+      font-size: $font-size-md;
+      box-shadow: $shadow-gold;
+      z-index: $z-base;
+    }
+
+    &-content {
+      @extend %glass-card;
+      flex: 1;
+      padding: $spacing-lg;
+    }
+
+    &-year {
+      @include gold-text;
+      font-family: $font-heading;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-xs;
+    }
+
+    &-title {
+      color: $text-primary;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-xs;
+      font-size: $font-size-md;
+    }
+
+    &-desc {
+      color: $text-muted;
+      font-size: $font-size-sm;
+      line-height: 1.6;
+    }
+  }
+}
+
+// --- Sekcja: Zasady gry -----------------------------------------------------
+.rules {
+  background: $bg-secondary;
+  @include checkerboard-bg(rgba(255,255,255,0.015), transparent, 40px);
+
+  &__grid {
+    @include card-grid(280px);
+  }
+
+  &__card {
+    @extend %glass-card;
+    padding: $spacing-xl;
+    @include flex-center(column);
+    align-items: flex-start;
+    gap: $spacing-md;
+    @include gold-hover-glow;
+
+    &-number {
+      @include flex-center;
+      width: 40px;
+      height: 40px;
+      border-radius: $radius-full;
+      background: rgba($color-gold, 0.15);
+      border: 1px solid rgba($color-gold, 0.4);
+      @include gold-text;
+      font-family: $font-heading;
+      font-size: $font-size-md;
+      font-weight: $font-weight-bold;
+      flex-shrink: 0;
+    }
+
+    &-title {
+      font-family: $font-heading;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $text-primary;
+    }
+
+    &-text {
+      font-size: $font-size-sm;
+      color: $text-secondary;
+      line-height: 1.7;
+    }
+
+    &-icon {
+      font-size: $font-size-3xl;
+      margin-bottom: -$spacing-xs;   // OPERATOR: ujemny margines
+    }
+  }
+}
+
+// --- Sekcja: Notacja szachowa -----------------------------------------------
+.notation {
+  background: $bg-primary;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+    align-items: start;
+
+    @include respond-to('md') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__example {
+    @extend %glass-card;
+    padding: $spacing-xl;
+
+    &-title {
+      font-family: $font-heading;
+      font-size: $font-size-lg;
+      color: $text-primary;
+      margin-bottom: $spacing-md;
+      padding-bottom: $spacing-md;
+      border-bottom: 1px solid rgba($color-gold, 0.2);
+    }
+
+    &-moves {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: $spacing-xs $spacing-md;
+      align-items: center;
+      font-family: $font-mono;
+      font-size: $font-size-sm;
+    }
+
+    &-num {
+      color: $text-muted;
+      font-weight: $font-weight-semibold;
+    }
+
+    &-white {
+      color: $text-primary;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $radius-sm;
+      background: rgba(255,255,255,0.06);
+      cursor: default;
+      transition: background $transition-fast;
+
+      &:hover {
+        background: rgba($color-gold, 0.15);
+        color: $color-gold;
+      }
+    }
+
+    &-black {
+      color: $text-secondary;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $radius-sm;
+      cursor: default;
+      transition: background $transition-fast;
+
+      &:hover {
+        background: rgba($color-gold, 0.1);
+        color: $color-gold;
+      }
+    }
+  }
+
+  &__legend {
+    @include flex-center(column);
+    align-items: flex-start;
+    gap: $spacing-md;
+  }
+
+  &__legend-item {
+    @extend %glass-card;
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    @include flex-between;
+    gap: $spacing-md;
+
+    &-symbol {
+      font-family: $font-mono;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      @include gold-text;
+      min-width: 32px;
+      text-align: center;
+    }
+
+    &-desc {
+      flex: 1;
+      font-size: $font-size-sm;
+      color: $text-secondary;
+    }
+  }
+}
+
+// --- Sekcja CTA (Call To Action) -------------------------------------------
+.cta-section {
+  background: linear-gradient(135deg, $color-dark-accent 0%, $color-dark 100%);
+  position: relative;
+  overflow: hidden;
+
+  @include checkerboard-bg(rgba(255,255,255,0.02), transparent, 48px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba($color-gold, 0.08), transparent);
+  }
+
+  &__inner {
+    @extend %container;
+    position: relative;
+    z-index: $z-base;
+    @include flex-center(column);
+    text-align: center;
+    gap: $spacing-xl;
+    padding-top: $spacing-4xl;
+    padding-bottom: $spacing-4xl;
+  }
+
+  &__badge {
+    @extend %badge;
+  }
+
+  &__title {
+    font-size: clamp($font-size-2xl, 4vw, $font-size-4xl);
+    max-width: 600px;
+
+    .highlight {
+      @include gold-text;
+    }
+  }
+
+  &__subtitle {
+    max-width: 500px;
+    color: $text-secondary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

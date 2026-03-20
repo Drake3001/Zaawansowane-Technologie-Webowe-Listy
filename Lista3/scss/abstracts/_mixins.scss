@@ -1,0 +1,153 @@
+// ==========================================================================
+// MIXINY (Mixins)
+// Wielokrotnie używane bloki z opcjonalnymi parametrami
+// ==========================================================================
+@use 'sass:math';
+
+// --- Responsywność: media query dla breakpointów ---
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: $bp-sm) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: $bp-md) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: $bp-lg) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: $bp-xl) { @content; }
+  }
+}
+
+// --- Flexbox: wyśrodkowanie ---
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+// --- Flexbox: przestrzeń między elementami ---
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// --- Grid: responsywna siatka kart ---
+@mixin card-grid($min-width: 280px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $spacing-xl;
+}
+
+// --- Szkło (glassmorphism): efekt rozmytego tła ---
+@mixin glass($opacity: 0.08, $blur: 16px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, $opacity * 1.5);
+}
+
+// --- Złoty gradient na tekście ---
+@mixin gold-text {
+  background: $gradient-gold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// --- Animacja pojawiania się (fade in + slide up) ---
+@mixin fade-in-up($delay: 0s, $distance: 30px) {
+  opacity: 0;
+  transform: translateY($distance);
+  animation: fadeInUp $transition-slow $delay forwards;
+}
+
+// --- Kafelkowy wzór szachownicy (CSS background) ---
+@mixin checkerboard-bg($light: rgba(255,255,255,0.03), $dark: transparent, $size: 40px) {
+  $half: math.div($size, 2);
+  background-color: $dark;
+  background-image:
+    linear-gradient(45deg, $light 25%, transparent 25%),
+    linear-gradient(-45deg, $light 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, $light 75%),
+    linear-gradient(-45deg, transparent 75%, $light 75%);
+  background-size: $size $size;
+  background-position: 0 0, 0 $half, $half (-$half), (-$half) 0;
+}
+
+// --- Pozycja absolutna wyśrodkowana ---
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// --- Efekt świecenia złotem po hover ---
+@mixin gold-hover-glow {
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-glow;
+    transform: translateY(-4px);
+  }
+}
+
+// --- Przycisk bazowy ---
+@mixin btn-base($padding-y: $spacing-md, $padding-x: $spacing-xl) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  padding: $padding-y $padding-x;
+  border: none;
+  border-radius: $radius-md;
+  font-family: $font-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all $transition-base;
+  white-space: nowrap;
+}
+
+// --- Ukrywanie tekstu poza widokiem (dostępność) ---
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// --- Obramowanie z gradientem ---
+@mixin gradient-border($width: 2px, $gradient: $gradient-gold, $radius: $radius-lg) {
+  position: relative;
+  border-radius: $radius;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -$width;
+    background: $gradient;
+    border-radius: $radius + $width;
+    z-index: -1;
+  }
+}
+
+// --- Sekcja strony: padding + ograniczenie szerokości ---
+@mixin section-base {
+  padding: $spacing-4xl $spacing-xl;
+
+  @include respond-to('md') {
+    padding: $spacing-3xl $spacing-lg;
+  }
+
+  @include respond-to('sm') {
+    padding: $spacing-2xl $spacing-md;
+  }
+}

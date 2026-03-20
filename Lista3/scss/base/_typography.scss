@@ -1,0 +1,65 @@
+// ==========================================================================
+// TYPOGRAFIA
+// Style typograficzne z Google Fonts — Playfair Display + Inter
+// ==========================================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  color: $text-primary;
+  background-color: $bg-primary;
+}
+
+// --- Nagłówki ---
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  color: $text-primary;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: $font-size-4xl; font-weight: $font-weight-bold; }
+h2 { font-size: $font-size-3xl; font-weight: $font-weight-bold; }
+h3 { font-size: $font-size-2xl; font-weight: $font-weight-semibold; }
+h4 { font-size: $font-size-xl;  font-weight: $font-weight-semibold; }
+
+// --- Akapity ---
+p {
+  color: $text-secondary;
+  line-height: 1.75;
+  font-size: $font-size-md;
+}
+
+// --- Klasy pomocnicze tekstu ---
+.text-gold   { color: $text-gold; }
+.text-muted  { color: $text-muted; font-size: $font-size-sm; }
+.text-center { text-align: center; }
+
+// --- Podkreślenie dekoracyjne złotą linią ---
+.decorated-title {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -$spacing-sm;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;                // OPERATOR: stała szerokość linii
+    height: 3px;
+    background: $gradient-gold;
+    border-radius: $radius-full;
+  }
+}
+
+// --- Złoty akcent ---
+.gold-accent {
+  background: $gradient-gold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
