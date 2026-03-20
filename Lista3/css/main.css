@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap");
-.notation__legend-item, .notation__example, .rules__card, .history__item-content, .about__fact, .piece-card {
+.notation__legend-item, .notation__example, .rules__card, .piece-card {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -8,7 +8,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
 }
-.notation__legend-item:hover, .notation__example:hover, .rules__card:hover, .history__item-content:hover, .about__fact:hover, .piece-card:hover {
+.notation__legend-item:hover, .notation__example:hover, .rules__card:hover, .piece-card:hover {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -32,7 +32,7 @@
   }
 }
 
-.cta-section__badge, .about__badge, .hero__badge, .piece-card__value {
+.cta-section__badge, .hero__badge, .piece-card__value {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -821,211 +821,6 @@ p {
 .section {
   position: relative;
 }
-.about {
-  background: #16213e;
-  background-color: transparent;
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%), linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%), linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%);
-  background-size: 50px 50px;
-  background-position: 0 0, 0 25px, 25px -25px, -25px 0;
-}
-.about__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-@media (max-width: 768px) {
-  .about__grid {
-    grid-template-columns: 1fr;
-  }
-}
-.about__image-block {
-  position: relative;
-  position: relative;
-  border-radius: 16px;
-}
-.about__image-block::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, #b8882a 0%, #e2b04a 60%, #f0c96a 100%);
-  border-radius: 18px;
-  z-index: -1;
-}
-.about__image-inner {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  min-height: 320px;
-}
-.about__big-piece {
-  font-size: 120px;
-  line-height: 1;
-  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.6));
-  animation: float 4s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-}
-.about__image-caption {
-  font-family: "Playfair Display", Georgia, serif;
-  font-style: italic;
-  color: #b8a898;
-  font-size: 1.125rem;
-  text-align: center;
-}
-.about__text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-.about__facts {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-}
-.about__fact {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.about__fact-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-.about__fact-text {
-  flex: 1;
-}
-.about__fact-text strong {
-  display: block;
-  color: #f5e6c8;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-.about__fact-text span {
-  color: #6b5e5e;
-  font-size: 0.75rem;
-}
-.about__fact-value {
-  background: linear-gradient(135deg, #b8882a 0%, #e2b04a 60%, #f0c96a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.history {
-  background: #1a1a2e;
-}
-.history__timeline {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-}
-.history__timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, transparent, rgba(226, 176, 74, 0.4), transparent);
-  transform: translateX(-50%);
-}
-@media (max-width: 768px) {
-  .history__timeline::before {
-    left: 20px;
-  }
-}
-.history__item {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  align-items: flex-start;
-}
-.history__item:nth-child(even) {
-  flex-direction: row-reverse;
-}
-@media (max-width: 768px) {
-  .history__item:nth-child(even) {
-    flex-direction: row;
-  }
-}
-.history__item:nth-child(even) .history__item-content {
-  text-align: right;
-}
-@media (max-width: 768px) {
-  .history__item:nth-child(even) .history__item-content {
-    text-align: left;
-  }
-}
-.history__item-dot {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, #b8882a 0%, #e2b04a 60%, #f0c96a 100%);
-  color: #1a1a2e;
-  font-size: 1.125rem;
-  box-shadow: 0 4px 20px rgba(226, 176, 74, 0.3);
-  z-index: 1;
-}
-.history__item-content {
-  flex: 1;
-  padding: 1.5rem;
-}
-.history__item-year {
-  background: linear-gradient(135deg, #b8882a 0%, #e2b04a 60%, #f0c96a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-.history__item-title {
-  color: #f5e6c8;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  font-size: 1.125rem;
-}
-.history__item-desc {
-  color: #6b5e5e;
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
 .rules {
   background: #16213e;
   background-color: transparent;
@@ -1357,3 +1152,5 @@ p {
 .footer__made-with span {
   color: #e25555;
 }
+
+/*# sourceMappingURL=main.css.map */

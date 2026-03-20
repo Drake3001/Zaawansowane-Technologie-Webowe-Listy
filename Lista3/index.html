@@ -20,9 +20,7 @@
       </a>
 
       <ul class="header__links" role="list">
-        <li><a href="#o-grze"    class="header__link" id="nav-about">O Grze</a></li>
         <li><a href="#figury"    class="header__link" id="nav-pieces">Figury</a></li>
-        <li><a href="#historia"  class="header__link" id="nav-history">Historia</a></li>
         <li><a href="#zasady"    class="header__link" id="nav-rules">Zasady</a></li>
         <li><a href="#notacja"   class="header__link" id="nav-notation">Notacja</a></li>
       </ul>
@@ -57,9 +55,6 @@
           <div class="hero__actions">
             <a href="#figury" class="btn-primary btn--lg" id="hero-cta-primary">
               ♟ Poznaj figury
-            </a>
-            <a href="#historia" class="btn-outline btn--lg" id="hero-cta-secondary">
-              📖 Historia
             </a>
           </div>
 
@@ -170,71 +165,6 @@
       </div>
     </section>
 
-    <!-- ===== O GRE ===== -->
-    <section class="section about" id="o-grze" aria-labelledby="about-title">
-      <div class="section__container">
-        <div class="section__header">
-          <span class="hero__badge" aria-label="Kategoria">♟ O grze</span>
-          <h2 class="decorated-title" id="about-title" style="margin-top: 1rem;">
-            Gra, która <span class="gold-accent">połączyła świat</span>
-          </h2>
-          <p>
-            Szachy to abstrakcyjna gra planszowa dla dwóch graczy, rozgrywana na kwadratowej planszy
-            z 64 polami, podzielonymi na 32 jasne i 32 ciemne. Każdy gracz dysponuje 16 figurami.
-          </p>
-        </div>
-
-        <div class="about__grid">
-          <div class="about__image-block">
-            <div class="about__image-inner">
-              <div class="about__big-piece" aria-hidden="true">♔</div>
-              <p class="about__image-caption">
-                „Szachy są gimnastyką umysłu"<br />— Blaise Pascal
-              </p>
-            </div>
-          </div>
-
-          <div class="about__text">
-            <span class="about__badge">📊 Kluczowe fakty</span>
-            <div class="about__facts">
-              <article class="about__fact" id="fact-players">
-                <span class="about__fact-icon" aria-hidden="true">👥</span>
-                <div class="about__fact-text">
-                  <strong>Gracze na świecie</strong>
-                  <span>Szachy są popularne na wszystkich kontynentach</span>
-                </div>
-                <span class="about__fact-value">500M+</span>
-              </article>
-              <article class="about__fact" id="fact-countries">
-                <span class="about__fact-icon" aria-hidden="true">🌍</span>
-                <div class="about__fact-text">
-                  <strong>Kraje zrzeszone w FIDE</strong>
-                  <span>Federacja Szachowa jest jedną z największych na świecie</span>
-                </div>
-                <span class="about__fact-value">197</span>
-              </article>
-              <article class="about__fact" id="fact-moves">
-                <span class="about__fact-icon" aria-hidden="true">♟</span>
-                <div class="about__fact-text">
-                  <strong>Możliwych pozycji</strong>
-                  <span>Unikalnych układów figur na szachownicy (liczba Shannona)</span>
-                </div>
-                <span class="about__fact-value">10<sup>43</sup></span>
-              </article>
-              <article class="about__fact" id="fact-origin">
-                <span class="about__fact-icon" aria-hidden="true">🕰️</span>
-                <div class="about__fact-text">
-                  <strong>Wiek gry</strong>
-                  <span>Szachy wywodzą się z VI-wiecznych Indii (gra Chaturanga)</span>
-                </div>
-                <span class="about__fact-value">~1500 lat</span>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== FIGURY ===== -->
     <section class="section" id="figury" aria-labelledby="pieces-title" style="background: var(--bg-primary, #1a1a2e);">
       <div class="section__container">
@@ -315,99 +245,6 @@
               Porusza się <strong>do przodu o 1 pole</strong>
               (2 z pozycji startowej), bije skosem. Po dojściu do końca — promocja!
             </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== HISTORIA ===== -->
-    <section class="section history" id="historia" aria-labelledby="history-title">
-      <div class="section__container">
-        <div class="section__header">
-          <span class="hero__badge" aria-label="Kategoria">📖 Historia</span>
-          <h2 class="decorated-title" id="history-title" style="margin-top: 1rem;">
-            1500 lat <span class="gold-accent">królewskiej gry</span>
-          </h2>
-          <p>
-            Szachy przeszły długą drogę — od pól bitew Indii po areny e-sportowe.
-            Oto najważniejsze kamienie milowe tej fascynującej historii.
-          </p>
-        </div>
-
-        <div class="history__timeline">
-          <article class="history__item" id="timeline-500">
-            <div class="history__item-dot" aria-hidden="true">♟</div>
-            <div class="history__item-content">
-              <p class="history__item-year">~500 n.e.</p>
-              <h3 class="history__item-title">Chaturanga — narodziny szachów</h3>
-              <p class="history__item-desc">
-                W Indiach okresu Gupta powstaje Chaturanga — protoplasta
-                współczesnych szachów. Cztery rodzaje wojsk: rydwany, słonie,
-                konie i piechota.
-              </p>
-            </div>
-          </article>
-
-          <article class="history__item" id="timeline-600">
-            <div class="history__item-dot" aria-hidden="true">♛</div>
-            <div class="history__item-content">
-              <p class="history__item-year">~600 n.e.</p>
-              <h3 class="history__item-title">Szatrandż — Persja przyjmuje grę</h3>
-              <p class="history__item-desc">
-                Persowie przejmują grę i rozwijają ją jako Szatrandż.
-                Znana formuła powitalna „Szach mat!" pochodzi z perskiego:
-                „Szach est mat" — „Król jest martwy".
-              </p>
-            </div>
-          </article>
-
-          <article class="history__item" id="timeline-900">
-            <div class="history__item-dot" aria-hidden="true">♚</div>
-            <div class="history__item-content">
-              <p class="history__item-year">IX wiek</p>
-              <h3 class="history__item-title">Szachy docierają do Europy</h3>
-              <p class="history__item-desc">
-                Arabowie przynoszą szachy do Europy przez Hiszpanię i Sycylię.
-                Gra szybko zyskuje popularność na dworach królewskich.
-              </p>
-            </div>
-          </article>
-
-          <article class="history__item" id="timeline-1475">
-            <div class="history__item-dot" aria-hidden="true">♕</div>
-            <div class="history__item-content">
-              <p class="history__item-year">1475</p>
-              <h3 class="history__item-title">Rewolucja zasad — nowoczesne szachy</h3>
-              <p class="history__item-desc">
-                W Europie wprowadzono drastyczne zmiany — hetman i goniec
-                zyskują nowe moce. Urodziła się gra, którą znamy dziś.
-              </p>
-            </div>
-          </article>
-
-          <article class="history__item" id="timeline-1886">
-            <div class="history__item-dot" aria-hidden="true">♔</div>
-            <div class="history__item-content">
-              <p class="history__item-year">1886</p>
-              <h3 class="history__item-title">Pierwsze Mistrzostwa Świata</h3>
-              <p class="history__item-desc">
-                Wilhelm Steinitz zostaje pierwszym oficjalnym Mistrzem Świata
-                w szachach, pokonując Johannesa Zukertorta. Początek ery
-                profesjonalnych szachów.
-              </p>
-            </div>
-          </article>
-
-          <article class="history__item" id="timeline-1997">
-            <div class="history__item-dot" aria-hidden="true">🤖</div>
-            <div class="history__item-content">
-              <p class="history__item-year">1997</p>
-              <h3 class="history__item-title">Człowiek vs Maszyna — Deep Blue wygrywa</h3>
-              <p class="history__item-desc">
-                Komputer Deep Blue firmy IBM pokonuje Mistrza Świata Garri Kasparowa
-                w oficjalnym meczu — przełomowy moment w historii AI i szachów.
-              </p>
-            </div>
           </article>
         </div>
       </div>
@@ -641,7 +478,6 @@
           <a href="#figury"   class="footer__col-link" id="footer-link-pieces">Figury szachowe</a>
           <a href="#zasady"   class="footer__col-link" id="footer-link-rules">Zasady gry</a>
           <a href="#notacja"  class="footer__col-link" id="footer-link-notation">Notacja</a>
-          <a href="#historia" class="footer__col-link" id="footer-link-history">Historia</a>
         </div>
 
         <!-- Kolumna 2 -->
