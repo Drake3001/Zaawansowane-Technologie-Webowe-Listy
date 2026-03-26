@@ -1,68 +1,31 @@
-// ==========================================================================
-// PRZYCISKI (Buttons)
-// Warianty przycisków — złoty, obrys, tekst
-// ==========================================================================
+.btn {
+  @include btn-base($spacing-sm * 1.5, $spacing-xl);
 
-// --- Przycisk złoty (primary) ---
-.btn-primary {
-  @include btn-base;
-  background: $gradient-gold;
-  color: $color-dark;
-  font-weight: $font-weight-bold;
-  box-shadow: $shadow-gold;
-  letter-spacing: 0.02em;
-
-  &:hover {
-    box-shadow: $shadow-glow;
-    transform: translateY(-3px);
-    filter: brightness(1.08);
-  }
-
-  &:active {
-    transform: translateY(-1px);
-  }
-}
-
-// --- Przycisk obrys (outline) ---
-.btn-outline {
-  @include btn-base;
-  background: transparent;
-  color: $color-gold;
-  border: 2px solid rgba($color-gold, 0.5);
-  letter-spacing: 0.02em;
-
-  &:hover {
-    background: rgba($color-gold, 0.1);
-    border-color: $color-gold;
+  &--primary {
+    background: $gradient-gold;
+    color: $bg-primary;
+    font-weight: $font-weight-bold;
     box-shadow: $shadow-gold;
-    transform: translateY(-3px);
+
+    &:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
   }
 
-  &:active {
-    transform: translateY(-1px);
-  }
-}
-
-// --- Przycisk tekstowy (ghost) ---
-.btn-ghost {
-  @include btn-base($spacing-sm, $spacing-md);
-  background: transparent;
-  color: $text-secondary;
-  font-size: $font-size-sm;
-
-  &:hover {
+  &--ghost {
+    background: transparent;
     color: $text-primary;
-    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba($color-gold, 0.45);
+
+    &:hover {
+      background: rgba($color-gold, 0.1);
+      transform: translateY(-2px);
+    }
   }
-}
 
-// --- Modyfikatory rozmiaru ---
-.btn--sm {
-  padding: $spacing-xs * 1.5 $spacing-md;  // OPERATOR: skalowanie paddingu
-  font-size: $font-size-sm;
-}
-
-.btn--lg {
-  padding: $spacing-md * 1.25 $spacing-2xl; // OPERATOR: mnożenie
-  font-size: $font-size-lg;
+  &--lg {
+    padding: $spacing-md * 1.2 $spacing-2xl;
+    font-size: $font-size-md;
+  }
 }

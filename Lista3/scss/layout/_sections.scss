@@ -1,73 +1,77 @@
-// ==========================================================================
-// SEKCJE STRONY (Sections)
-// Bazowa klasa sekcji + sekcja zasad gry
-// ==========================================================================
-
-// ---- Sekcja bazowa -----
 .section {
-  @include section-base;             // MIXIN: padding responsywny
+  @include section-base;
   position: relative;
 
   &__container {
-    @extend %container;              // DZIEDZICZENIE: max-width + centrowanie
+    @extend %container;
   }
 
   &__header {
-    @extend %section-header;         // DZIEDZICZENIE: wyśrodkowany nagłówek
+    @extend %section-header;
   }
 
-  &__divider {
-    @extend %divider;                // DZIEDZICZENIE: linia z gradientem
+  &__eyebrow {
+    @extend %badge;
   }
 }
 
-// --- Sekcja: Zasady gry -----------------------------------------------------
-.rules {
-  background: $bg-secondary;        // ZMIENNA: kolor tła
-  @include checkerboard-bg(rgba(255,255,255,0.015), transparent, 40px); // MIXIN + OPERATOR w środku
+.play {
+  background: $gradient-dark;
+  @include checkerboard-bg(rgba(255, 255, 255, 0.02), $bg-secondary, 34px);
 
   &__grid {
-    @include card-grid(280px);       // MIXIN: responsywna siatka kart
+    @include card-grid(300px);
+    max-width: 780px;
+    margin: 0 auto;
+  }
+}
+
+.play-card {
+  @extend %glass-card;
+  @include flex-center(column);
+  @include gold-hover-glow;
+  padding: $spacing-xl * 1.3; // operator
+  align-items: flex-start;
+  gap: $spacing-md;
+  text-decoration: none;
+  cursor: pointer;
+
+  &--best {
+    border: 1px solid rgba($color-gold, 0.5);
   }
 
-  &__card {
-    @extend %glass-card;             // DZIEDZICZENIE: efekt szkła
-    padding: $spacing-xl;            // ZMIENNA: odstęp
-    @include flex-center(column);    // MIXIN: flex kolumna
-    align-items: flex-start;
-    gap: $spacing-md;                // ZMIENNA: odstęp
-    @include gold-hover-glow;        // MIXIN: efekt hover ze złotą poświatą
+  &__badge {
+    @extend %badge;
+    margin-bottom: -$spacing-xs; // operator
+  }
 
-    &-number {
-      @include flex-center;          // MIXIN: flex center
-      width: $spacing-xl * 2;        // OPERATOR: mnożenie zmiennej (40px)
-      height: $spacing-xl * 2;       // OPERATOR: mnożenie zmiennej
-      border-radius: $radius-full;   // ZMIENNA: zaokrąglenie
-      background: rgba($color-gold, 0.15);
-      border: 1px solid rgba($color-gold, 0.4);
-      @include gold-text;            // MIXIN: złoty gradient na tekście
-      font-family: $font-heading;    // ZMIENNA: font
-      font-size: $font-size-md;      // ZMIENNA: rozmiar
-      font-weight: $font-weight-bold;
-      flex-shrink: 0;
-    }
+  &__icon {
+    font-size: $font-size-3xl * 1.2; // operator
+    line-height: 1;
+    margin-bottom: -$spacing-xs;
+    transition: transform $transition-base;
 
-    &-title {
-      font-family: $font-heading;    // ZMIENNA: font nagłówkowy
-      font-size: $font-size-lg;      // ZMIENNA: rozmiar czcionki
-      font-weight: $font-weight-semibold;
-      color: $text-primary;          // ZMIENNA: kolor tekstu
+    .play-card:hover & {
+      transform: scale(1.08);
     }
+  }
 
-    &-text {
-      font-size: $font-size-sm;      // ZMIENNA: mały rozmiar
-      color: $text-secondary;        // ZMIENNA: kolor drugorzędny
-      line-height: 1.7;
-    }
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+  }
 
-    &-icon {
-      font-size: $font-size-3xl;     // ZMIENNA: duży rozmiar emoji
-      margin-bottom: -$spacing-xs;   // OPERATOR: ujemny margines (-4px)
-    }
+  &__desc {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    line-height: 1.65;
+  }
+
+  &__cta {
+    @include gold-text;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    margin-top: $spacing-xs;
   }
 }
