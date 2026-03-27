@@ -97,6 +97,12 @@ body {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+.employee-card .card-img-top {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+}
+
 .employee-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
