@@ -16,7 +16,6 @@
 }
 
 .play {
-  background: $gradient-dark;
   @include checkerboard-bg(rgba(255, 255, 255, 0.02), $bg-secondary, 34px);
 
   &__grid {

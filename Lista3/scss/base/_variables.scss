@@ -5,7 +5,6 @@ $color-dark: #121625;
 $color-dark-soft: #1d2338;
 $color-gold: #e2b04a;
 $color-gold-light: #f0c96a;
-$color-white: #ffffff;
 
 // Tekst i tlo
 $text-primary: #f5e6c8;
@@ -41,7 +40,6 @@ $spacing-3xl: 4rem;
 
 // Layout
 $max-width: 1000px;
-$radius-sm: 4px;
 $radius-md: 8px;
 $radius-lg: 16px;
 $radius-full: 9999px;
@@ -54,8 +52,6 @@ $transition-base: 0.25s ease;
 
 // Gradients
 $gradient-gold: linear-gradient(135deg, color.adjust($color-gold, $lightness: -15%) 0%, $color-gold 55%, $color-gold-light 100%);
-$gradient-dark: linear-gradient(160deg, $bg-primary 0%, $bg-secondary 100%);
 
 // Breakpoints
-$bp-sm: 640px;
 $bp-md: 860px;

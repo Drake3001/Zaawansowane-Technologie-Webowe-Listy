@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Travel SPA - Lista 4</title>
+    <link
+      rel="icon"
+      href="MDB5-STANDARD-UI-KIT-Free-9.3.0/img/mdb-favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" href="MDB5-STANDARD-UI-KIT-Free-9.3.0/css/mdb.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#intro">Travel SPA</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-collapse-init
+            data-mdb-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="#about">O nas</a></li>
+              <li class="nav-item"><a class="nav-link" href="#employees">Zespół</a></li>
+              <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div id="intro" class="bg-image vh-100">
+        <div class="mask intro-mask d-flex justify-content-center align-items-center">
+          <div class="container text-white text-center animate-on-scroll">
+            <h1 class="mb-3 fw-bold">Podróżowanie po świecie</h1>
+            <p class="mb-4 lead">
+              Odkryj najpopularniejsze kierunki, poznaj nasz zespół i zaplanuj własną wyprawę.
+            </p>
+            <a class="btn btn-outline-light btn-lg btn-magnet" data-mdb-ripple-init href="#contact">
+              Skontaktuj się z nami <i class="fas fa-arrow-right ms-2 btn-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="mt-5">
+      <div class="container py-5">
+        <section id="about" class="mb-5 animate-on-scroll">
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-3">
+              <h2 class="h3">Tekst + zdjęcie 1:3</h2>
+              <p class="text-muted mb-0">
+                Sekcja wykorzystuje proporcję kolumn 1:3 (`col-lg-3` do `col-lg-9`) zgodnie z
+                wymaganiem. Na mniejszych ekranach układ przechodzi do jednej kolumny.
+              </p>
+            </div>
+            <div class="col-lg-9">
+              <img
+                class="img-fluid rounded-5 shadow-4"
+                src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1600&q=80"
+                alt="Góry i jezioro"
+              />
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <section id="stats" class="mb-5 animate-on-scroll">
+          <div class="row g-4 text-center">
+            <div class="col-md-4">
+              <div class="card py-4 h-100">
+                <div class="card-body">
+                  <div class="display-5 fw-bold">
+                    <span class="counter" data-counter-to="1240" data-counter-suffix="+">0</span>
+                  </div>
+                  <div class="text-muted">Rezerwacje</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card py-4 h-100">
+                <div class="card-body">
+                  <div class="display-5 fw-bold">
+                    <span class="counter" data-counter-to="3700" data-counter-suffix="+">0</span>
+                  </div>
+                  <div class="text-muted">Klienci</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card py-4 h-100">
+                <div class="card-body">
+                  <div class="display-5 fw-bold">
+                    <span class="counter" data-counter-to="48">0</span>
+                  </div>
+                  <div class="text-muted">Kraje w ofercie</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <section id="quote" class="mb-5 animate-on-scroll">
+          <figure class="text-center py-4 px-3 rounded-5 quote-box">
+            <blockquote class="blockquote mb-4">
+              <p class="mb-0 fs-4">
+                "Świat jest książką, a ci którzy nie podróżują, czytają tylko jedną stronę."
+              </p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0 text-light">św. Augustyn</figcaption>
+          </figure>
+        </section>
+
+        <hr class="my-5" />
+
+        <section id="employees" class="mb-5 animate-on-scroll">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="h3 mb-0">Nasz zespół - Carousel + Cards</h2>
+            <div>
+              <button
+                class="btn btn-sm btn-outline-primary me-2"
+                type="button"
+                data-mdb-target="#employeesCarousel"
+                data-mdb-slide="prev"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary"
+                type="button"
+                data-mdb-target="#employeesCarousel"
+                data-mdb-slide="next"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="employeesCarousel"
+            class="carousel slide"
+            data-mdb-carousel-init
+            data-mdb-interval="false"
+            data-mdb-touch="true"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Anna Nowak"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Anna Nowak</h5>
+                        <p class="card-text mb-0">Specjalistka ds. Azji</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Marek Kowalski"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Marek Kowalski</h5>
+                        <p class="card-text mb-0">Przewodnik górski</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Karolina Wiśniewska"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Karolina Wiśniewska</h5>
+                        <p class="card-text mb-0">City break expert</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Piotr Zając"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Piotr Zając</h5>
+                        <p class="card-text mb-0">Koordynator wypraw</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Ewa Król"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Ewa Król</h5>
+                        <p class="card-text mb-0">Rejsy i wyspy</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Tomasz Wilk"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Tomasz Wilk</h5>
+                        <p class="card-text mb-0">Podróże budżetowe</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Natalia Lis"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Natalia Lis</h5>
+                        <p class="card-text mb-0">Kierunki egzotyczne</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Kamil Nowicki"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Kamil Nowicki</h5>
+                        <p class="card-text mb-0">Logistyka i loty</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card h-100 employee-card tilt-card">
+                      <span class="card-glow" aria-hidden="true"></span>
+                      <img
+                        src="https://images.unsplash.com/photo-1524503033411-f7a2fe8c7f83?auto=format&fit=crop&w=900&q=80"
+                        class="card-img-top"
+                        alt="Oliwia Zielińska"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title">Oliwia Zielińska</h5>
+                        <p class="card-text mb-0">Obsługa klienta</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <section id="destinations-chart" class="mb-5 animate-on-scroll">
+          <h2 class="h3 mb-4">Najpopularniejsze kierunki podróży</h2>
+          <div class="card p-3 chart-card">
+            <div class="chart-wrap">
+              <canvas id="travelChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <section id="faq" class="mb-5 animate-on-scroll">
+          <h2 class="h3 mb-4">FAQ</h2>
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeadingOne">
+                <button
+                  data-mdb-collapse-init
+                  class="accordion-button"
+                  type="button"
+                  data-mdb-target="#faqCollapseOne"
+                  aria-expanded="true"
+                  aria-controls="faqCollapseOne"
+                >
+                  Jak wygląda proces rezerwacji?
+                </button>
+              </h2>
+              <div
+                id="faqCollapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="faqHeadingOne"
+                data-mdb-parent="#faqAccordion"
+              >
+                <div class="accordion-body">
+                  Najpierw konsultacja, potem wybór oferty i finalizacja płatności online.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeadingTwo">
+                <button
+                  data-mdb-collapse-init
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-mdb-target="#faqCollapseTwo"
+                  aria-expanded="false"
+                  aria-controls="faqCollapseTwo"
+                >
+                  Czy mogę zmienić termin wyjazdu?
+                </button>
+              </h2>
+              <div
+                id="faqCollapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="faqHeadingTwo"
+                data-mdb-parent="#faqAccordion"
+              >
+                <div class="accordion-body">
+                  Tak, w większości ofert możliwa jest zmiana terminu zgodnie z warunkami przewoźnika.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeadingThree">
+                <button
+                  data-mdb-collapse-init
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-mdb-target="#faqCollapseThree"
+                  aria-expanded="false"
+                  aria-controls="faqCollapseThree"
+                >
+                  Czy oferujecie ubezpieczenie?
+                </button>
+              </h2>
+              <div
+                id="faqCollapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="faqHeadingThree"
+                data-mdb-parent="#faqAccordion"
+              >
+                <div class="accordion-body">
+                  Tak, oferujemy kilka wariantów ubezpieczenia turystycznego i medycznego.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <section id="map" class="mb-5 animate-on-scroll">
+          <h2 class="h3 mb-4">Google Maps</h2>
+          <div class="ratio ratio-16x9 rounded-5 overflow-hidden shadow-4">
+            <iframe
+              src="https://www.google.com/maps?q=Warsaw%20Poland&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa biura podróży"
+            ></iframe>
+          </div>
+        </section>
+
+        <hr class="my-5" />
+
+        <section id="contact" class="animate-on-scroll">
+          <h2 class="h3 mb-4">Formularz kontaktowy</h2>
+          <form class="row g-4" novalidate>
+            <div class="col-md-6">
+              <div data-mdb-input-init class="form-outline">
+                <input type="text" id="name" class="form-control" required />
+                <label class="form-label" for="name">Imię i nazwisko</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div data-mdb-input-init class="form-outline">
+                <input type="email" id="email" class="form-control" required />
+                <label class="form-label" for="email">Email</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div data-mdb-input-init class="form-outline">
+                <input type="tel" id="phone" class="form-control" required />
+                <label class="form-label" for="phone">Telefon</label>
+                <div class="invalid-feedback">Podaj numer telefonu.</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <select class="form-select" aria-label="Wybierz kierunek" required>
+                <option value="" selected disabled>Wybierz kierunek</option>
+                <option value="europa">Europa</option>
+                <option value="azja">Azja</option>
+                <option value="ameryka">Ameryka</option>
+              </select>
+              <div class="invalid-feedback">Wybierz kierunek.</div>
+            </div>
+            <div class="col-12">
+              <div data-mdb-input-init class="form-outline">
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+                <label class="form-label" for="message">Wiadomość</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary btn-lg" data-mdb-ripple-init type="submit">
+                Wyślij wiadomość
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer class="text-center text-lg-start bg-light text-muted">
+      <div class="container py-4">
+        <div class="text-center">© 2026 Travel SPA - Bootstrap 5 + MDB5</div>
+      </div>
+    </footer>
+
+    <script src="MDB5-STANDARD-UI-KIT-Free-9.3.0/js/mdb.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
