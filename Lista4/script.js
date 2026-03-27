@@ -175,19 +175,39 @@
       });
     };
 
+    const playChartAnimation = () => {
+      createChart();
+      if (!travelChart) return;
+      travelChart.stop();
+      travelChart.reset();
+      travelChart.update();
+    };
+
     const chartSection = document.getElementById("destinations-chart") || chartCanvas;
-    const chartObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            createChart();
-            chartObserver.disconnect();
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-    chartObserver.observe(chartSection);
+    if ("IntersectionObserver" in window) {
+      let chartInView = false;
+      const chartObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !chartInView) {
+              chartInView = true;
+              playChartAnimation();
+            }
+            if (!entry.isIntersecting) {
+              chartInView = false;
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: "0px 0px -8% 0px",
+        }
+      );
+      chartObserver.observe(chartSection);
+    } else {
+      // Fallback for older browsers without IntersectionObserver support.
+      playChartAnimation();
+    }
 
     let chartResizeTimer = null;
     window.addEventListener("resize", () => {
