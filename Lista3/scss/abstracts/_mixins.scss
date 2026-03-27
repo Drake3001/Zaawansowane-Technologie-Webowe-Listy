@@ -1,9 +1,7 @@
 @use 'sass:math';
 
 @mixin respond-to($breakpoint) {
-  @if $breakpoint == 'sm' {
-    @media (max-width: $bp-sm) { @content; }
-  } @else if $breakpoint == 'md' {
+  @if $breakpoint == 'md' {
     @media (max-width: $bp-md) { @content; }
   }
 }

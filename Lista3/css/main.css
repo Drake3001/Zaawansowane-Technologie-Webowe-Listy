@@ -146,19 +146,6 @@ p {
   font-size: 1.125rem;
 }
 
-.text-gold {
-  color: #e2b04a;
-}
-
-.text-muted {
-  color: #8f8577;
-  font-size: 0.875rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
 .decorated-title {
   position: relative;
   display: inline-block;
@@ -325,7 +312,6 @@ p {
   position: relative;
 }
 .play {
-  background: linear-gradient(160deg, #121625 0%, #1d2338 100%);
   background-color: #1d2338;
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%), linear-gradient(-45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%), linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.02) 75%);
   background-size: 34px 34px;
