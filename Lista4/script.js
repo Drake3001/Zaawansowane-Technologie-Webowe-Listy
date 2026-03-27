@@ -1,29 +1,4 @@
 (() => {
-  const introEl = document.getElementById("intro");
-  if (introEl) {
-    let latestY = window.scrollY;
-    let ticking = false;
-
-    const update = () => {
-      const y = Math.max(0, latestY);
-      const offset = Math.min(120, y * 0.18);
-      introEl.style.backgroundPosition = `center calc(50% + ${offset}px)`;
-      ticking = false;
-    };
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        latestY = window.scrollY;
-        if (!ticking) {
-          ticking = true;
-          window.requestAnimationFrame(update);
-        }
-      },
-      { passive: true }
-    );
-  }
-
   const employeesCarouselEl = document.getElementById("employeesCarousel");
   if (employeesCarouselEl && window.mdb?.Carousel) {
     const carousel =
@@ -82,7 +57,7 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         animation: { duration: 1100, easing: "easeOutQuart" },
         scales: {
           x: {
@@ -110,42 +85,6 @@
       },
     });
   }
-
-  const magnetButtons = document.querySelectorAll(".btn-magnet");
-  magnetButtons.forEach((btn) => {
-    const strength = 10;
-    const onMove = (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - (rect.left + rect.width / 2);
-      const y = e.clientY - (rect.top + rect.height / 2);
-      btn.style.transform = `translate(${(x / rect.width) * strength}px, ${(y / rect.height) * strength}px)`;
-    };
-    const onLeave = () => {
-      btn.style.transform = "";
-    };
-    btn.addEventListener("pointermove", onMove);
-    btn.addEventListener("pointerleave", onLeave);
-  });
-
-  const tiltCards = document.querySelectorAll(".tilt-card");
-  tiltCards.forEach((card) => {
-    const maxTilt = 10;
-    const onMove = (e) => {
-      const rect = card.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-      const tiltY = (px - 0.5) * (maxTilt * 2);
-      const tiltX = (0.5 - py) * (maxTilt * 2);
-      card.style.transform = `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
-      card.style.setProperty("--mx", `${px * 100}%`);
-      card.style.setProperty("--my", `${py * 100}%`);
-    };
-    const onLeave = () => {
-      card.style.transform = "";
-    };
-    card.addEventListener("pointermove", onMove);
-    card.addEventListener("pointerleave", onLeave);
-  });
 
   const counters = document.querySelectorAll(".counter");
   if (counters.length) {
@@ -184,22 +123,6 @@
     counters.forEach((c) => io.observe(c));
   }
 
-  const animatedSections = document.querySelectorAll(".animate-on-scroll");
-  if (animatedSections.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    animatedSections.forEach((el) => observer.observe(el));
-  }
-
   const forms = document.querySelectorAll("form[novalidate]");
   forms.forEach((form) => {
     form.addEventListener("submit", (event) => {
@@ -209,6 +132,8 @@
       } else {
         event.preventDefault();
         alert("Dziękujemy! Wiadomość została wysłana.");
+        form.reset();
+        form.classList.remove("was-validated");
       }
       form.classList.add("was-validated");
     });

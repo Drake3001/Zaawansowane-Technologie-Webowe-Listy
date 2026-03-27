@@ -4,7 +4,6 @@
 
 W folderze `Lista4` przygotowano kompletny szablon SPA oparty o:
 - Bootstrap 5 i komponenty Material Design z `MDB5-STANDARD-UI-KIT-Free-9.3.0`,
-- własne style w `style.css`,
 - skrypty interaktywne w `script.js`.
 
 Główny plik strony to `index.html`.
@@ -31,6 +30,8 @@ Główny plik strony to `index.html`.
    - `col-lg-3` (tekst),
    - `col-lg-9` (zdjęcie).  
    Na urządzeniach mobilnych układ przechodzi automatycznie do jednej kolumny.
+   
+   Dodatkowo w sekcji zastosowano kontrolkę **Collapse** (link „Czytaj więcej”) do rozwijania dodatkowego opisu.
 
 4. **Sekcja z cytatem**  
    Zrealizowana jako `#quote` z semantycznym znacznikiem `figure > blockquote > figcaption`.
@@ -56,19 +57,19 @@ Główny plik strony to `index.html`.
    - etykiety: Włochy, Hiszpania, Japonia, Islandia, Portugalia, Grecja,
    - dane rezerwacji dla 2026,
    - responsywna konfiguracja osi,
-   - powiększony obszar wykresu (`.chart-wrap`) oraz dopracowane style osi/siatki,
    - animacja startowa z easingiem.
 
 9. **Animacje (poziom najwyższej oceny)**  
-   Dodano animacje i mikrointerakcje:
-   - **reveal on scroll** (`.animate-on-scroll` + `IntersectionObserver`),
-   - **parallax** tła w hero (`#intro`) przy przewijaniu (JS na `requestAnimationFrame`),
-   - **karty pracowników**: 3D tilt + gradientowy highlight pod kursorem (`.tilt-card` + `.card-glow`),
-   - **przycisk CTA**: magnet + przesuwająca się ikona (`.btn-magnet`),
-   - **animowane liczniki** w sekcji `#stats` (start po wejściu w viewport).
+   Zastosowano wbudowane efekty MDB w kartach:
+   - `hover-overlay` + `mask` (delikatne przyciemnienie na hover),
+   - `ripple` (Material ripple),
+   - `shadow-4` / `hover-shadow` (cienie i przejścia).
 
 10. **Sekcja z licznikami (dodatkowa)**  
    Sekcja `#stats` prezentuje animowane wartości: Rezerwacje, Klienci, Kraje w ofercie.
+
+11. **Offcanvas (dodatkowa)**  
+   W nawigacji dodano przycisk „Szybkie akcje”, który otwiera panel **Offcanvas** z linkami do sekcji (SPA navigation).
 
 ## Zastosowane technologie i biblioteki
 
@@ -81,8 +82,7 @@ Główny plik strony to `index.html`.
 ## Struktura plików w `Lista4`
 
 - `index.html` - pełna struktura SPA i sekcje zadaniowe
-- `style.css` - dodatkowe style, wygląd hero, cytatu, kart, wykresu i animacji
-- `script.js` - wykres (Chart.js), animacje (scroll/parallax), mikrointerakcje (tilt/magnet), liczniki, walidacja formularza
+- `script.js` - wykres (Chart.js), przewijanie karuzeli myszką (drag), liczniki, walidacja formularza
 - `raport.md` - niniejszy raport
 
 ## Uwagi do wymagania o Multi-item carousel
