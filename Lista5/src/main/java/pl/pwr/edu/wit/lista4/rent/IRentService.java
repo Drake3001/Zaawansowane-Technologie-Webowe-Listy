@@ -5,8 +5,8 @@ import java.util.Collection;
 public interface IRentService {
     Collection<Rent> getRents();
     Rent getRent(int id);
-    Rent rentBook(Rent rent);
-    Rent updateRent(Rent rent);
+    Rent rentBook(RentDTO rentDto);
+    Rent updateRent(int id, RentDTO rentDto);
     Rent returnBook(int id);
     boolean deleteRent(int id);
     void deleteRentsByBookId(int bookId);

@@ -19,8 +19,22 @@ public class AuthorController {
 
     @Operation(summary = "Pobierz wszystkich autorów", description = "Zwraca listę wszystkich autorów")
     @RequestMapping(value = "/get/authors", method = RequestMethod.GET)
-    public ResponseEntity<Object> getAuthors() {
-        return new ResponseEntity<>(authorService.getAuthors(), HttpStatus.OK);
+    public ResponseEntity<Object> getAuthors(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        if (size <= 0) size = 10;
+        if (page < 0) page = 0;
+        java.util.List<Author> allAuthors = new java.util.ArrayList<>(authorService.getAuthors());
+        int start = Math.min(page * size, allAuthors.size());
+        int end = Math.min((page + 1) * size, allAuthors.size());
+        
+        java.util.Map<String, Object> response = new java.util.HashMap<>();
+        response.put("content", allAuthors.subList(start, end));
+        response.put("currentPage", page);
+        response.put("totalItems", allAuthors.size());
+        response.put("totalPages", (int) Math.ceil((double) allAuthors.size() / size));
+        
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Operation(summary = "Pobierz autora po ID", description = "Zwraca autora o podanym ID")

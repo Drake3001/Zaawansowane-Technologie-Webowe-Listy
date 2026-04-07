@@ -2,14 +2,18 @@ package pl.pwr.edu.wit.lista4.rent;
 
 import org.springframework.stereotype.Service;
 import java.util.Collection;
+import pl.pwr.edu.wit.lista4.book.BookRepository;
+import pl.pwr.edu.wit.lista4.book.Book;
 
 @Service
 public class RentService implements IRentService {
 
     private final RentRepository rentRepository;
+    private final BookRepository bookRepository;
 
-    public RentService(RentRepository rentRepository) {
+    public RentService(RentRepository rentRepository, BookRepository bookRepository) {
         this.rentRepository = rentRepository;
+        this.bookRepository = bookRepository;
     }
 
     @Override
@@ -23,25 +27,43 @@ public class RentService implements IRentService {
     }
 
     @Override
-    public Rent rentBook(Rent rent) {
-        if (rent.getBook() == null) {
+    public Rent rentBook(RentDTO rentDto) {
+        Book book = bookRepository.findById(rentDto.getBookId());
+        if (book == null) {
             return null;
         }
-        
+
         boolean isCurrentlyRented = rentRepository.findAll().stream()
             .anyMatch(r -> !r.isReturned() && 
                            r.getBook() != null && 
-                           r.getBook().getId() == rent.getBook().getId());
+                           r.getBook().getId() == book.getId());
                            
         if (isCurrentlyRented) {
             return null; 
         }
 
+        Rent rent = new Rent();
+        rent.setBook(book);
+        rent.setReaderName(rentDto.getReaderName());
+        
         return rentRepository.rentBook(rent);
     }
 
     @Override
-    public Rent updateRent(Rent rent) {
+    public Rent updateRent(int id, RentDTO rentDto) {
+        Book book = bookRepository.findById(rentDto.getBookId());
+        if (book == null) {
+            return null;
+        }
+        
+        Rent rent = new Rent();
+        rent.setId(id);
+        rent.setBook(book);
+        rent.setReaderName(rentDto.getReaderName());
+        rent.setRentDate(rentDto.getRentDate());
+        rent.setReturnDate(rentDto.getReturnDate());
+        rent.setReturned(rentDto.isReturned());
+        
         return rentRepository.updateRent(rent);
     }
 
