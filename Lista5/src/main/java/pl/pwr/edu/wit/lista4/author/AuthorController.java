@@ -49,16 +49,15 @@ public class AuthorController {
 
     @Operation(summary = "Dodaj autora", description = "Tworzy nowego autora")
     @RequestMapping(value = "/post/author", method = RequestMethod.POST)
-    public ResponseEntity<Object> createAuthor(@RequestBody Author author) {
-        Author savedAuthor = authorService.saveAuthor(author);
+    public ResponseEntity<Object> createAuthor(@RequestBody AuthorDTO authorDto) {
+        Author savedAuthor = authorService.saveAuthor(authorDto);
         return new ResponseEntity<>(savedAuthor, HttpStatus.OK);
     }
 
     @Operation(summary = "Aktualizuj autora", description = "Aktualizuje istniejącego autora")
     @RequestMapping(value = "/put/author/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Object> updateAuthor(@PathVariable("id") int id, @RequestBody Author author) {
-        author.setId(id);
-        Author savedAuthor = authorService.saveAuthor(author);
+    public ResponseEntity<Object> updateAuthor(@PathVariable("id") int id, @RequestBody AuthorDTO authorDto) {
+        Author savedAuthor = authorService.updateAuthor(id, authorDto);
         return new ResponseEntity<>(savedAuthor, HttpStatus.OK);
     }
 

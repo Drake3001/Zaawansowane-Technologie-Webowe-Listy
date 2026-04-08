@@ -11,11 +11,20 @@ import java.util.Optional;
 public class AuthorRepository {
 
     private final List<Author> authorRepo = new ArrayList<>();
+    private int idCounter = 12;
 
     public AuthorRepository() {
         authorRepo.add(new Author(1, "Henryk", "Sienkiewicz"));
         authorRepo.add(new Author(2, "Stanisław", "Reymont"));
         authorRepo.add(new Author(3, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(4, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(5, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(6, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(7, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(8, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(9, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(10 , "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(11, "Adam", "Mickiewicz"));
     }
 
     public Collection<Author> findAll() {
@@ -30,18 +39,24 @@ public class AuthorRepository {
     }
 
     public Author save(Author author) {
-        Optional<Author> existingAuthor = authorRepo.stream()
-            .filter(a -> a.getId() == author.getId())
-            .findFirst();
-        
-        if (existingAuthor.isPresent()) {
-            Author a = existingAuthor.get();
-            a.setName(author.getName());
-            a.setSurname(author.getSurname());
-            return a;
-        } else {
+        if (author.getId() == 0) {
+            author.setId(idCounter++);
             authorRepo.add(author);
             return author;
+        } else {
+            Optional<Author> existingAuthor = authorRepo.stream()
+                .filter(a -> a.getId() == author.getId())
+                .findFirst();
+            
+            if (existingAuthor.isPresent()) {
+                Author a = existingAuthor.get();
+                a.setName(author.getName());
+                a.setSurname(author.getSurname());
+                return a;
+            } else {
+                authorRepo.add(author);
+                return author;
+            }
         }
     }
 

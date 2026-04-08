@@ -14,6 +14,7 @@ import java.util.Optional;
 public class BookRepository {
 
     private final List<Book> booksRepo = new ArrayList<>();
+    private int idCounter = 4;
 
     public BookRepository(AuthorRepository authorRepository) {
         Author a1 = authorRepository.findById(1);
@@ -36,19 +37,25 @@ public class BookRepository {
     }
 
     public Book save(Book book) {
-        Optional<Book> existingBook = booksRepo.stream()
-            .filter(b -> b.getId() == book.getId())
-            .findFirst();
-        
-        if (existingBook.isPresent()) {
-            Book b = existingBook.get();
-            b.setTitle(book.getTitle());
-            b.setAuthor(book.getAuthor());
-            b.setPages(book.getPages());
-            return b;
-        } else {
+        if (book.getId() == 0) {
+            book.setId(idCounter++);
             booksRepo.add(book);
             return book;
+        } else {
+            Optional<Book> existingBook = booksRepo.stream()
+                .filter(b -> b.getId() == book.getId())
+                .findFirst();
+            
+            if (existingBook.isPresent()) {
+                Book b = existingBook.get();
+                b.setTitle(book.getTitle());
+                b.setAuthor(book.getAuthor());
+                b.setPages(book.getPages());
+                return b;
+            } else {
+                booksRepo.add(book);
+                return book;
+            }
         }
     }
 

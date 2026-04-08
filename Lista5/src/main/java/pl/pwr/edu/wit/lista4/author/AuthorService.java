@@ -27,7 +27,19 @@ public class AuthorService implements IAuthorService {
     }
 
     @Override
-    public Author saveAuthor(Author author) {
+    public Author saveAuthor(AuthorDTO authorDto) {
+        Author author = new Author();
+        author.setName(authorDto.getName());
+        author.setSurname(authorDto.getSurname());
+        return authorRepository.save(author);
+    }
+
+    @Override
+    public Author updateAuthor(int id, AuthorDTO authorDto) {
+        Author author = new Author();
+        author.setId(id);
+        author.setName(authorDto.getName());
+        author.setSurname(authorDto.getSurname());
         return authorRepository.save(author);
     }
 

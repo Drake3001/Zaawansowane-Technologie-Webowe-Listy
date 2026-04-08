@@ -5,6 +5,7 @@ import java.util.Collection;
 public interface IAuthorService {
     Collection<Author> getAuthors();
     Author getAuthor(int id);
-    Author saveAuthor(Author author);
+    Author saveAuthor(AuthorDTO author);
+    Author updateAuthor(int id, AuthorDTO author);
     boolean deleteAuthor(int id);
 }

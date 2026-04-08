@@ -14,15 +14,6 @@ interface Author {
 }
 ```
 
-### AuthorDTO (Tworzenie i aktualizacja autrora)
-Model używany podczas wysyłania zapytań `POST` i `PUT`.
-```typescript
-interface AuthorDTO {
-    name: string;
-    surname: string;
-}
-```
-
 ### Book (Książka)
 Reprezentuje książkę. Zwracana jest przy zapytaniach `GET`. Zauważ, że zawiera pełny obiekt autora jako zagnieżdżenie.
 ```typescript
@@ -95,11 +86,11 @@ Wszystkie endpointy grupują operacje dla autorów, książek i wypożyczeń.
   * Odpowiedź: `Author` lub `404 Not Found`
 * **Nowy autor**
   * `POST /post/author`
-  * Body: `AuthorDTO` (id jest przypisywane automatycznie po stronie backendu)
+  * Body: `Author` (bez id, lub zostanie nadpisane przez serwer)
   * Odpowiedź: Zapisany `Author`
 * **Aktualizacja**
   * `PUT /put/author/{id}`
-  * Body: `AuthorDTO`
+  * Body: `Author`
   * Odpowiedź: Zaktualizowany `Author`
 * **Usunięcie**
   * `DELETE /delete/author/{id}`
