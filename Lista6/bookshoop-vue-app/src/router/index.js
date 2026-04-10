@@ -8,22 +8,26 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView
+    component: HomeView,
+    meta: { layout: 'main' }
   },
   {
     path: '/authors',
     name: 'Authors',
-    component: AuthorsView
+    component: AuthorsView,
+    meta: { layout: 'plain' }
   },
   {
     path: '/books',
     name: 'Books',
-    component: BooksView
+    component: BooksView,
+    meta: { layout: 'plain' }
   },
   {
     path: '/rents',
     name: 'Rents',
-    component: RentsView
+    component: RentsView,
+    meta: { layout: 'plain' }
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="layout-main">
     <nav class="navbar">
       <div class="nav-container">
         <h1 class="nav-title">Library Management</h1>
@@ -12,7 +12,7 @@
       </div>
     </nav>
     <main class="main-content">
-      <router-view />
+      <slot />
     </main>
   </div>
 </template>
