@@ -14,48 +14,70 @@
         </li>
       </ul>
       <p v-else>No recent rents.</p>
+      <Pagination
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        @page-changed="fetchRecentRents"
+      />
     </div>
-    <div class="actions">
+    <!-- <div class="actions">
       <router-link to="/authors" class="btn">Manage Authors</router-link>
       <router-link to="/books" class="btn">Manage Books</router-link>
       <router-link to="/rents" class="btn">Manage Rents</router-link>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from 'vue'
-import { getAuthors, getBooks, getRents } from '../services/api'
+import { getAuthors, getBooks, getLatestRents } from '../services/api'
 import StatCard from '../components/StatCard.vue'
+import Pagination from '../components/Pagination.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    StatCard
+    StatCard,
+    Pagination
   },
   setup() {
+    const PAGE_SIZE = 5
     const stats = ref({ authors: 0, books: 0, rents: 0 })
     const recentRents = ref([])
+    const currentPage = ref(0)
+    const totalPages = ref(1)
+
+    const fetchRecentRents = async (page = 0) => {
+      try {
+        const rentsRes = await getLatestRents(page, PAGE_SIZE)
+        stats.value.rents = rentsRes.data.totalItems
+        recentRents.value = rentsRes.data.content
+        currentPage.value = page
+        totalPages.value = Math.max(1, Math.ceil((rentsRes.data.totalItems || 0) / PAGE_SIZE))
+      } catch (error) {
+        console.error('Error fetching recent rents:', error)
+      }
+    }
 
     const fetchStats = async () => {
       try {
-        const [authorsRes, booksRes, rentsRes] = await Promise.all([
+        const [authorsRes, booksRes] = await Promise.all([
           getAuthors(0, 1),
-          getBooks(0, 1),
-          getRents(0, 5)
+          getBooks(0, 1)
         ])
         stats.value.authors = authorsRes.data.totalItems
         stats.value.books = booksRes.data.totalItems
-        stats.value.rents = rentsRes.data.totalItems
-        recentRents.value = rentsRes.data.content
       } catch (error) {
         console.error('Error fetching stats:', error)
       }
     }
 
-    onMounted(fetchStats)
+    onMounted(() => {
+      fetchStats()
+      fetchRecentRents(0)
+    })
 
-    return { stats, recentRents }
+    return { stats, recentRents, currentPage, totalPages, fetchRecentRents }
   }
 }
 </script>

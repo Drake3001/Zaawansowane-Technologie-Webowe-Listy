@@ -6,7 +6,6 @@ const api = axios.create({
   baseURL
 })
 
-// Response interceptor for error handling
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -54,6 +53,7 @@ export const deleteBook = (id) => api.delete(`/delete/book/${id}`)
 
 // Rents
 export const getRents = (page = 0, size = 10) => api.get(`/get/rents?page=${page}&size=${size}`)
+export const getLatestRents = (page = 0, count = 5) => api.get(`/get/rents/latest?page=${page}&count=${count}`)
 export const getRent = (id) => api.get(`/get/rent/${id}`)
 export const createRent = (rentDTO) => api.post('/post/rent', rentDTO)
 export const updateRent = (id, rentDTO) => api.put(`/put/rent/${id}`, rentDTO)
