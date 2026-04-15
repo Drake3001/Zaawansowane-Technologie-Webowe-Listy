@@ -8,22 +8,32 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView
+    component: HomeView,
+    meta: { layout: 'default-layout' }
+  },
+  {
+    path: '/home-alt',
+    name: 'HomeAlt',
+    component: HomeView,
+    meta: { layout: 'alt-layout' }
   },
   {
     path: '/authors',
     name: 'Authors',
-    component: AuthorsView
+    component: AuthorsView,
+    meta: { layout: 'default-layout' }
   },
   {
     path: '/books',
     name: 'Books',
-    component: BooksView
+    component: BooksView,
+    meta: { layout: 'default-layout' }
   },
   {
     path: '/rents',
     name: 'Rents',
-    component: RentsView
+    component: RentsView,
+    meta: { layout: 'default-layout' }
   }
 ]
 

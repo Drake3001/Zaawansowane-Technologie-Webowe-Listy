@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-    <h2>Library Dashboard</h2>
+    <div class="view-header">
+      <h2>Library Dashboard</h2>
+      <button @click="$root.toggleLayout" class="btn btn-layout">
+        {{ $root.currentLayout === 'alt-layout' ? 'Use default layout' : 'Use alt layout' }}
+      </button>
+    </div>
     <div class="stats">
       <StatCard title="Total Authors" :value="stats.authors" />
       <StatCard title="Total Books" :value="stats.books" />
@@ -20,11 +25,6 @@
         @page-changed="fetchRecentRents"
       />
     </div>
-    <!-- <div class="actions">
-      <router-link to="/authors" class="btn">Manage Authors</router-link>
-      <router-link to="/books" class="btn">Manage Books</router-link>
-      <router-link to="/rents" class="btn">Manage Rents</router-link>
-    </div> -->
   </div>
 </template>
 
@@ -77,7 +77,13 @@ export default {
       fetchRecentRents(0)
     })
 
-    return { stats, recentRents, currentPage, totalPages, fetchRecentRents }
+    return {
+      stats,
+      recentRents,
+      currentPage,
+      totalPages,
+      fetchRecentRents
+    }
   }
 }
 </script>
@@ -85,6 +91,14 @@ export default {
 <style scoped>
 .home {
   text-align: center;
+}
+
+.view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .stats {
@@ -117,5 +131,9 @@ export default {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+.btn-layout {
+  white-space: nowrap;
 }
 </style>

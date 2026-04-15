@@ -37,6 +37,31 @@ public class RentController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @Operation(summary = "Pobierz najnowsze wypożyczenia", description = "Zwraca wypożyczenia posortowane od najnowszych")
+    @RequestMapping(value = "/get/rents/latest", method = RequestMethod.GET)
+    public ResponseEntity<Object> getLatestRents(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(name = "count", defaultValue = "10") int count) {
+        if (count <= 0) count = 10;
+        if (page < 0) page = 0;
+        
+        java.util.List<Rent> sortedRents = rentService.getRents().stream()
+                .filter(r -> r.getRentDate() != null)
+                .sorted(java.util.Comparator.comparing(Rent::getRentDate).reversed())
+                .collect(java.util.stream.Collectors.toList());
+                
+        int start = Math.min(page * count, sortedRents.size());
+        int end = Math.min((page + 1) * count, sortedRents.size());
+        
+        java.util.Map<String, Object> response = new java.util.HashMap<>();
+        response.put("content", sortedRents.subList(start, end));
+        response.put("currentPage", page);
+        response.put("totalItems", sortedRents.size());
+        response.put("totalPages", (int) Math.ceil((double) sortedRents.size() / count));
+        
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @Operation(summary = "Pobierz wypożyczenie po ID", description = "Zwraca wypożyczenie o podanym ID")
     @RequestMapping(value = "/get/rent/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> getRent(@PathVariable("id") int id) {

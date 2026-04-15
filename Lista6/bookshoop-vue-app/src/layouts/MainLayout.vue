@@ -1,18 +1,17 @@
 <template>
-  <div id="app">
-    <nav class="navbar">
-      <div class="nav-container">
-        <h1 class="nav-title">Library Management</h1>
-        <ul class="nav-menu">
-          <li><router-link to="/" class="nav-link">Home</router-link></li>
-          <li><router-link to="/authors" class="nav-link">Authors</router-link></li>
-          <li><router-link to="/books" class="nav-link">Books</router-link></li>
-          <li><router-link to="/rents" class="nav-link">Rents</router-link></li>
-        </ul>
-      </div>
-    </nav>
-    <main class="main-content">
-      <router-view />
+  <div class="default-layout">
+    <header class="layout-header">
+      <div class="layout-brand">Library Management</div>
+      <nav class="layout-nav">
+        <router-link to="/" class="layout-link">Home</router-link>
+        <router-link to="/authors" class="layout-link">Authors</router-link>
+        <router-link to="/books" class="layout-link">Books</router-link>
+        <router-link to="/rents" class="layout-link">Rents</router-link>
+      </nav>
+    </header>
+
+    <main class="layout-content">
+      <slot />
     </main>
   </div>
 </template>
@@ -24,48 +23,45 @@ export default {
 </script>
 
 <style scoped>
-.navbar {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
+.default-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.nav-container {
+.layout-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
 }
 
-.nav-title {
-  margin: 0;
+.layout-brand {
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
-.nav-menu {
-  list-style: none;
+.layout-nav {
   display: flex;
   gap: 1rem;
-  margin: 0;
-  padding: 0;
 }
 
-.nav-link {
+.layout-link {
   color: white;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 4px;
-  transition: background-color 0.3s;
 }
 
-.nav-link:hover,
-.nav-link.router-link-active {
+.layout-link.router-link-active,
+.layout-link:hover {
   background-color: #555;
 }
 
-.main-content {
+.layout-content {
+  flex: 1;
   padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 </style>

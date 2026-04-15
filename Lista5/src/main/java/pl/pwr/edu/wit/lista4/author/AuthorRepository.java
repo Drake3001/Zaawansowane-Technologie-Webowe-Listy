@@ -11,20 +11,24 @@ import java.util.Optional;
 public class AuthorRepository {
 
     private final List<Author> authorRepo = new ArrayList<>();
-    private int idCounter = 12;
+    private int idCounter = 15;
 
     public AuthorRepository() {
         authorRepo.add(new Author(1, "Henryk", "Sienkiewicz"));
         authorRepo.add(new Author(2, "Stanisław", "Reymont"));
         authorRepo.add(new Author(3, "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(4, "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(5, "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(6, "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(7, "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(8, "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(9, "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(10 , "Adam", "Mickiewicz"));
-        authorRepo.add(new Author(11, "Adam", "Mickiewicz"));
+        authorRepo.add(new Author(4, "Bolesław", "Prus"));
+        authorRepo.add(new Author(5, "Wisława", "Szymborska"));
+        authorRepo.add(new Author(6, "Juliusz", "Słowacki"));
+        authorRepo.add(new Author(7, "Stefan", "Żeromski"));
+        authorRepo.add(new Author(8, "Czesław", "Miłosz"));
+        authorRepo.add(new Author(9, "Zbigniew", "Herbert"));
+        authorRepo.add(new Author(10, "Olga", "Tokarczuk"));
+        authorRepo.add(new Author(11, "Witold", "Gombrowicz"));
+        authorRepo.add(new Author(12, "Stanisław", "Lem"));
+        authorRepo.add(new Author(13, "Andrzej", "Sapkowski"));
+        authorRepo.add(new Author(14, "Zofia", "Nałkowska"));
+        authorRepo.add(new Author(15, "Maria", "Konopnicka"));
     }
 
     public Collection<Author> findAll() {
@@ -40,7 +44,8 @@ public class AuthorRepository {
 
     public Author save(Author author) {
         if (author.getId() == 0) {
-            author.setId(idCounter++);
+            idCounter+=1;
+            author.setId(idCounter);
             authorRepo.add(author);
             return author;
         } else {

@@ -14,22 +14,26 @@ public class RentRepository {
     private int idCounter = 1;
 
     public RentRepository(pl.pwr.edu.wit.lista4.book.BookRepository bookRepository) {
-        pl.pwr.edu.wit.lista4.book.Book b1 = bookRepository.findById(1);
-        pl.pwr.edu.wit.lista4.book.Book b2 = bookRepository.findById(2);
-
-        if (b1 != null) {
-            Rent rent1 = new Rent(idCounter++, b1, "Jan Kowalski");
-            rent1.setRentDate(LocalDate.now().minusDays(10));
-            rent1.setReturned(true);
-            rent1.setReturnDate(LocalDate.now().minusDays(2));
-            rents.add(rent1);
-        }
-
-        if (b2 != null) {
-            Rent rent2 = new Rent(idCounter++, b2, "Anna Nowak");
-            rent2.setRentDate(LocalDate.now().minusDays(5));
-            rent2.setReturned(false);
-            rents.add(rent2);
+        String[] readers = {
+            "Jan Kowalski", "Anna Nowak", "Piotr Wiśniewski", "Maria Dąbrowska", "Tomasz Lewandowski",
+            "Katarzyna Wójcik", "Michał Kamiński", "Agnieszka Kowalczyk", "Krzysztof Zieliński", "Ewa Szymańska",
+            "Wojciech Woźniak", "Krystyna Kozłowska", "Andrzej Majewski", "Krystyna Kwiatkowska", "Janusz Krawczyk"
+        };
+        
+        for (int i = 1; i <= 15; i++) {
+            pl.pwr.edu.wit.lista4.book.Book b = bookRepository.findById(i);
+            if (b != null) {
+                Rent rent = new Rent(idCounter++, b, readers[i - 1]);
+                if (i % 2 == 0) {
+                    rent.setRentDate(LocalDate.now().minusDays(10 + i));
+                    rent.setReturned(true);
+                    rent.setReturnDate(LocalDate.now().minusDays(i));
+                } else {
+                    rent.setRentDate(LocalDate.now().minusDays(i));
+                    rent.setReturned(false);
+                }
+                rents.add(rent);
+            }
         }
     }
 
