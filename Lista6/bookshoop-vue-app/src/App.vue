@@ -1,9 +1,5 @@
 <template>
-  <component :is="layout">
-    <router-view v-slot="{ Component }">
-      <component :is="Component" />
-    </router-view>
-  </component>
+  <component :is="layoutComponent" />
 </template>
 
 <script>
@@ -11,6 +7,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import MainLayout from './layouts/MainLayout.vue'
 import PlainLayout from './layouts/PlainLayout.vue'
+import { LAYOUT_MAIN } from './router'
 
 const layouts = {
   main: MainLayout,
@@ -21,10 +18,11 @@ export default {
   name: 'App',
   setup() {
     const route = useRoute()
-    const layout = computed(
-      () => layouts[route.meta.layout] || PlainLayout
-    )
-    return { layout }
+    const layoutComponent = computed(() => {
+      const key = route.meta.layout || LAYOUT_MAIN
+      return layouts[key] || MainLayout
+    })
+    return { layoutComponent }
   }
 }
 </script>
@@ -34,8 +32,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 100vh;
 }
 </style>
