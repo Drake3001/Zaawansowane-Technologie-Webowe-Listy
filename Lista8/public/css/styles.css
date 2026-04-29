@@ -153,6 +153,24 @@ button.secondary {
   line-height: 1.4;
 }
 
+.bubble-text .fmt-bold {
+  font-weight: 700;
+}
+
+.bubble-text .fmt-italic {
+  font-style: italic;
+}
+
+.bubble-text .fmt-underline {
+  text-decoration: underline;
+}
+
+.message-row.self .bubble-text .fmt-bold,
+.message-row.self .bubble-text .fmt-italic,
+.message-row.self .bubble-text .fmt-underline {
+  color: inherit;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

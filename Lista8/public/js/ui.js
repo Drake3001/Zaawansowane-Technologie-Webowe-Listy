@@ -8,6 +8,136 @@ function renderRoomOptions(availableRooms, roomSelect) {
   }
 }
 
+/**
+ * Renders plain text with simple inline markers (no innerHTML, no nesting inside spans):
+ * **bold**, *italic*, __underline__
+ */
+function appendFormattedPlainText(container, rawText) {
+  var s = typeof rawText === 'string' ? rawText : '';
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+  if (!s) {
+    return;
+  }
+
+  function appendTextSlice(from, to) {
+    if (from >= to) {
+      return;
+    }
+    container.appendChild(document.createTextNode(s.slice(from, to)));
+  }
+
+  function appendSpan(className, innerFrom, innerTo) {
+    var span = document.createElement('span');
+    span.className = className;
+    span.appendChild(document.createTextNode(s.slice(innerFrom, innerTo)));
+    container.appendChild(span);
+  }
+
+  function findNextItalicOpen(start) {
+    var k = start;
+    while (k < s.length) {
+      if (s[k] !== '*') {
+        k += 1;
+        continue;
+      }
+      if (k + 1 < s.length && s[k + 1] === '*') {
+        k += 2;
+        continue;
+      }
+      return k;
+    }
+    return -1;
+  }
+
+  function findNextItalicClose(openPos) {
+    var j;
+    for (j = openPos + 1; j < s.length; j += 1) {
+      if (s[j] !== '*') {
+        continue;
+      }
+      if (j + 1 < s.length && s[j + 1] === '*') {
+        j += 1;
+        continue;
+      }
+      return j;
+    }
+    return -1;
+  }
+
+  var i = 0;
+  while (i < s.length) {
+    var idxBold = s.indexOf('**', i);
+    var idxUnder = s.indexOf('__', i);
+    var idxItalic = findNextItalicOpen(i);
+
+    var candidates = [];
+    if (idxBold >= 0) {
+      candidates.push({ pos: idxBold, kind: 'bold' });
+    }
+    if (idxUnder >= 0) {
+      candidates.push({ pos: idxUnder, kind: 'under' });
+    }
+    if (idxItalic >= 0) {
+      candidates.push({ pos: idxItalic, kind: 'italic' });
+    }
+
+    if (!candidates.length) {
+      appendTextSlice(i, s.length);
+      break;
+    }
+
+    candidates.sort(function(a, b) {
+      if (a.pos !== b.pos) {
+        return a.pos - b.pos;
+      }
+      var lenA = a.kind === 'italic' ? 1 : 2;
+      var lenB = b.kind === 'italic' ? 1 : 2;
+      return lenB - lenA;
+    });
+
+    var pick = candidates[0];
+    appendTextSlice(i, pick.pos);
+
+    if (pick.kind === 'bold') {
+      var closeB = s.indexOf('**', pick.pos + 2);
+      if (closeB === -1 || closeB === pick.pos + 2) {
+        appendTextSlice(pick.pos, pick.pos + 2);
+        i = pick.pos + 2;
+        continue;
+      }
+      appendSpan('fmt-bold', pick.pos + 2, closeB);
+      i = closeB + 2;
+      continue;
+    }
+
+    if (pick.kind === 'under') {
+      var closeU = s.indexOf('__', pick.pos + 2);
+      if (closeU === -1 || closeU === pick.pos + 2) {
+        appendTextSlice(pick.pos, pick.pos + 2);
+        i = pick.pos + 2;
+        continue;
+      }
+      appendSpan('fmt-underline', pick.pos + 2, closeU);
+      i = closeU + 2;
+      continue;
+    }
+
+    if (pick.kind === 'italic') {
+      var closeI = findNextItalicClose(pick.pos);
+      if (closeI === -1 || closeI === pick.pos + 1) {
+        appendTextSlice(pick.pos, pick.pos + 1);
+        i = pick.pos + 1;
+        continue;
+      }
+      appendSpan('fmt-italic', pick.pos + 1, closeI);
+      i = closeI + 1;
+      continue;
+    }
+  }
+}
+
 function appendChatMessage(data, nick, messages) {
   var isSelf = data.nick === nick;
   var item = document.createElement('li');
@@ -52,7 +182,7 @@ function appendChatMessage(data, nick, messages) {
     wrapper.appendChild(fallback);
     bubble.appendChild(wrapper);
   } else {
-    text.textContent = data.text || '';
+    appendFormattedPlainText(text, data.text || '');
     bubble.appendChild(text);
   }
 
