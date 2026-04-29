@@ -19,6 +19,8 @@ var leaveBtn = document.getElementById('leaveBtn');
 var messages = document.getElementById('messages');
 var chatForm = document.getElementById('chatForm');
 var chatInput = document.getElementById('chatInput');
+var imageInput = document.getElementById('imageInput');
+var imageBtn = document.getElementById('imageBtn');
 
 function setError(message) {
   error.textContent = message || '';
@@ -136,6 +138,67 @@ chatInput.addEventListener('input', function() {
 
 chatInput.addEventListener('blur', function() {
   stopTyping();
+});
+
+function uploadSelectedImage(file) {
+  if (!file || !currentRoom) {
+    return;
+  }
+
+  var formData = new FormData();
+  formData.append('image', file);
+  imageBtn.disabled = true;
+
+  fetch('/api/uploads', { method: 'POST', body: formData })
+    .then(function(res) {
+      return res.json().then(function(data) {
+        return { ok: res.ok, data: data };
+      });
+    })
+    .then(function(result) {
+      imageBtn.disabled = false;
+      imageInput.value = '';
+
+      if (!result.ok || !result.data || !result.data.ok) {
+        setError((result.data && result.data.error) || 'Upload failed.');
+        return;
+      }
+
+      setError('');
+      socket.emit('chat_message', { type: 'image', url: result.data.url }, function(sendResult) {
+        if (!sendResult || !sendResult.ok) {
+          setError((sendResult && sendResult.message) || 'Could not send image message.');
+          return;
+        }
+        stopTyping();
+      });
+    })
+    .catch(function() {
+      imageBtn.disabled = false;
+      imageInput.value = '';
+      setError('Upload failed.');
+    });
+}
+
+imageBtn.addEventListener('click', function() {
+  if (!currentRoom) {
+    setError('Join a room before sending images.');
+    return;
+  }
+  imageInput.click();
+});
+
+imageInput.addEventListener('change', function() {
+  var file = imageInput.files && imageInput.files[0];
+  if (!file) {
+    return;
+  }
+  if (!currentRoom) {
+    setError('Join a room before sending images.');
+    imageInput.value = '';
+    return;
+  }
+  uploadSelectedImage(file);
 });
 
 socket.on('rooms_list', function(rooms) {

@@ -21,6 +21,18 @@ function normalizeMessage(rawMessage) {
   return rawMessage.trim().slice(0, MAX_MESSAGE_LENGTH);
 }
 
+/** Only allow same-origin-style paths to our upload folder (no traversal). */
+function isAllowedImageUrl(url) {
+  if (typeof url !== 'string' || !url.startsWith('/uploads/')) {
+    return false;
+  }
+  const rest = url.slice('/uploads/'.length);
+  if (!rest || rest.includes('..') || rest.includes('/') || rest.includes('\\')) {
+    return false;
+  }
+  return /^[a-zA-Z0-9._-]+$/.test(rest);
+}
+
 function emitError(socket, message) {
   socket.emit('error_message', message);
 }
@@ -131,18 +143,42 @@ function initializeSocket(io) {
         return;
       }
 
-      const text = normalizeMessage(rawMessage);
-      if (!text) {
-        const message = 'Message cannot be empty.';
+      let payload;
+
+      if (typeof rawMessage === 'string') {
+        const text = normalizeMessage(rawMessage);
+        if (!text) {
+          const message = 'Message cannot be empty.';
+          if (callback) callback({ ok: false, message });
+          return;
+        }
+        payload = {
+          nick: socket.data.nick,
+          text,
+          createdAt: Date.now()
+        };
+      } else if (
+        rawMessage
+        && typeof rawMessage === 'object'
+        && rawMessage.type === 'image'
+        && typeof rawMessage.url === 'string'
+      ) {
+        if (!isAllowedImageUrl(rawMessage.url)) {
+          const message = 'Invalid image URL.';
+          if (callback) callback({ ok: false, message });
+          return;
+        }
+        payload = {
+          nick: socket.data.nick,
+          type: 'image',
+          url: rawMessage.url,
+          createdAt: Date.now()
+        };
+      } else {
+        const message = 'Invalid message.';
         if (callback) callback({ ok: false, message });
         return;
       }
-
-      const payload = {
-        nick: socket.data.nick,
-        text,
-        createdAt: Date.now()
-      };
 
       updateTypingState(io, socket.data.room, socket.data.nick, false);
       storeMessage(socket.data.room, payload);

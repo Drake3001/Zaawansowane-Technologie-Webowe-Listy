@@ -27,12 +27,35 @@ function appendChatMessage(data, nick, messages) {
 
   nickLabel.textContent = data.nick;
   timeLabel.textContent = timestamp.toLocaleString();
-  text.textContent = data.text;
 
   meta.appendChild(nickLabel);
   meta.appendChild(timeLabel);
   bubble.appendChild(meta);
-  bubble.appendChild(text);
+
+  if (data.type === 'image' && data.url) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'bubble-image';
+    var img = document.createElement('img');
+    img.src = data.url;
+    img.alt = 'Shared image';
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
+    var fallback = document.createElement('div');
+    fallback.className = 'bubble-image-fallback';
+    fallback.textContent = 'Could not load image.';
+    fallback.hidden = true;
+    img.addEventListener('error', function() {
+      img.hidden = true;
+      fallback.hidden = false;
+    });
+    wrapper.appendChild(img);
+    wrapper.appendChild(fallback);
+    bubble.appendChild(wrapper);
+  } else {
+    text.textContent = data.text || '';
+    bubble.appendChild(text);
+  }
+
   item.appendChild(bubble);
   messages.appendChild(item);
   messages.scrollTop = messages.scrollHeight;
