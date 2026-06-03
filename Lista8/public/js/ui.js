@@ -8,10 +8,6 @@ function renderRoomOptions(availableRooms, roomSelect) {
   }
 }
 
-/**
- * Renders plain text with simple inline markers (no innerHTML, no nesting inside spans):
- * **bold**, *italic*, __underline__
- */
 function appendFormattedPlainText(container, rawText) {
   var s = typeof rawText === 'string' ? rawText : '';
   while (container.firstChild) {

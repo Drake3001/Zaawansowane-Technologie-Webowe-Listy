@@ -1,6 +1,6 @@
-const ROOMS = ['general', 'tech', 'random'];
+const { getRooms } = require('./rooms');
 const HISTORY_LIMIT = 20;
-const roomHistory = new Map(ROOMS.map((room) => [room, []]));
+const roomHistory = new Map(getRooms().map((room) => [room, []]));
 
 /** Text: { nick, text, createdAt } | Image: { nick, type: 'image', url, createdAt } */
 function storeMessage(room, message) {

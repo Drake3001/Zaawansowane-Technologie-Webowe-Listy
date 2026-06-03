@@ -1,7 +1,7 @@
 const { storeMessage, getHistory } = require('./messages');
 const { updateTypingState } = require('./typing');
+const { getRooms, isValidRoom } = require('./rooms');
 
-const ROOMS = ['general', 'tech', 'random'];
 const MAX_NICK_LENGTH = 20;
 const MAX_MESSAGE_LENGTH = 300;
 
@@ -21,7 +21,6 @@ function normalizeMessage(rawMessage) {
   return rawMessage.trim().slice(0, MAX_MESSAGE_LENGTH);
 }
 
-/** Only allow same-origin-style paths to our upload folder (no traversal). */
 function isAllowedImageUrl(url) {
   if (typeof url !== 'string' || !url.startsWith('/uploads/')) {
     return false;
@@ -42,7 +41,7 @@ function initializeSocket(io) {
     socket.data.nick = null;
     socket.data.room = null;
 
-    socket.emit('rooms_list', ROOMS);
+    socket.emit('rooms_list', getRooms());
 
     socket.on('set_nick', (rawNick, callback) => {
       const nick = normalizeNick(rawNick);
@@ -88,7 +87,7 @@ function initializeSocket(io) {
         return;
       }
 
-      if (!ROOMS.includes(room)) {
+      if (!isValidRoom(room)) {
         const message = 'Selected room is not available.';
         emitError(socket, message);
         if (callback) callback({ ok: false, message });

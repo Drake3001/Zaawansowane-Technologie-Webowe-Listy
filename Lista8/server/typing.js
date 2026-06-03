@@ -1,5 +1,5 @@
-const ROOMS = ['general', 'tech', 'random'];
-const roomTyping = new Map(ROOMS.map((room) => [room, new Set()]));
+const { getRooms } = require('./rooms');
+const roomTyping = new Map(getRooms().map((room) => [room, new Set()]));
 
 function updateTypingState(io, room, nick, isTyping) {
   const typingUsers = roomTyping.get(room);
